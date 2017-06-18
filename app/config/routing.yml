@@ -1,6 +1,6 @@
 ad_site:
     resource: "@AdSiteBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /adsite/
 
 app:
     resource: '@AppBundle/Controller/'
