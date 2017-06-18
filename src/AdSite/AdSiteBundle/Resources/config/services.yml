@@ -1,0 +1,4 @@
+services:
+#    ad_site.example:
+#        class: AdSite\AdSiteBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
