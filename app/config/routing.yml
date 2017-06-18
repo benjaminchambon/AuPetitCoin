@@ -1,3 +1,7 @@
+ad_site:
+    resource: "@AdSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
