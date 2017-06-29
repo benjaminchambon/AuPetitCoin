@@ -10,5 +10,12 @@ namespace AdSite\AdSiteBundle\Repository;
  */
 class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getArticlesByCategory($category){
+        $articles = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Articles a
+        WHERE a.category LIKE :category
+        ')->setParameter('category', '%'.$category.'%')->getResult();
 
+        return $articles;
+    }
 }
