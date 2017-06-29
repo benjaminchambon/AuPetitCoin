@@ -4,4 +4,8 @@ ad_site_homepage:
 
 test:
     path:     /login
-    defaults : { _controller: AdSiteBundle:Connexion:login }
+    defaults : { _controller: AdSiteBundle:Login:login}
+
+test_homepage:
+    path:     /welcome
+    defaults : { _controller: AdSiteBundle:Welcome:welcome}
