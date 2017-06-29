@@ -1,3 +1,7 @@
 ad_site_homepage:
     path:     /hello/{name}
     defaults: { _controller: AdSiteBundle:Default:index }
+
+test:
+    path:     /formulaire
+    defaults : { _controller: AdSiteBundle:Connexion:connexionFormulaire }
