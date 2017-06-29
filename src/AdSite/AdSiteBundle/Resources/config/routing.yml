@@ -3,5 +3,5 @@ ad_site_homepage:
     defaults: { _controller: AdSiteBundle:Default:index }
 
 test:
-    path:     /formulaire
-    defaults : { _controller: AdSiteBundle:Connexion:connexionFormulaire }
+    path:     /login
+    defaults : { _controller: AdSiteBundle:Connexion:login }

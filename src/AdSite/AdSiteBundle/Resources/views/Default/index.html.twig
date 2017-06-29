@@ -4,11 +4,12 @@
     formulaire :
     {{form(form)}}
     {{ pseudo }}
-    Liste des produits :
-    {% for produit in produits %}
-        {{ produit.nom }}</<br>
-        {{ produit.description }}
-        {{ produit.prix }}
+    Liste des articles :
+    {% for article in articles %}
+        {{ article.title }}</<br>
+        {{ article.description }}
+        {{ article.price }}
+        {{  article.date|date('Y-m-d') }}
     {% endfor %}
 {% endblock %}
 {% block navigation %}
