@@ -10,4 +10,5 @@ namespace AdSite\AdSiteBundle\Repository;
  */
 class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
