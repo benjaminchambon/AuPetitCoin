@@ -20,11 +20,12 @@
 {% endblock %}
 
 {% block body %}
+
     <div id="main">
     <center>
         <div id="block_form">
             <h1>Ajouter une annonce</h1>
-            {{form(form)}}
+            {{form(form, {'attr' : {'novalidate' : 'novalidate'}})}}
             <form action="{{ path('test_homepage') }}" onclick="return confirm('Etes-vous sûr de vouloir annuler ?')">
                 <input type="submit" value="Annuler" />
             </form>
