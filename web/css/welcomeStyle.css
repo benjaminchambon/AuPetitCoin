@@ -1,0 +1,99 @@
+#main {
+    width: 929px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+#block_form
+{
+    width: 800px;
+    background-color: #f2f2f2;
+    /*padding: 40px;*/
+    margin:auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 30px;
+
+
+}
+
+
+#ad ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 802px;
+    background-color: #f1f1f1;
+}
+
+#ad li a {
+    display: block;
+    color: #000;
+  /*  padding: 8px 16px;*/
+    text-decoration: none;
+}
+
+#ad li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#ad li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+#ad #elt{
+     width:802px;
+     height: 155px;
+     /*pour centrer*/
+      margin:auto;
+     border: 1px #CCC solid;
+
+     /*text*/
+     color:#555;
+     font-family: Arial;
+ }
+
+#ad #elt .asideg{
+    float:left;
+    width:20%;
+     padding: 15px;
+
+ }
+#ad #main_tile{
+    width:804px;
+    height: 40px;
+    /*pour centrer*/
+    margin:auto;
+    font-size:20px;
+    font-family: Arial;
+    font-weight:bold;
+
+    /*text*/
+    color:#dddddd;
+    background-color: #444;
+    font-family: Arial;
+}
+
+#ad #elt .asided{
+    width:300px;
+    margin-left:20%;
+    padding:10px;
+}
+
+#ad #elt .asided .title{
+    font-size: 18px;
+    font-family:Arial;
+    font-weight: bold;
+    color:#4CAF50;
+}
+
+#ad #elt .asided .price{
+    font-size: 20px;
+    font-family:Arial;
+    font-weight: bold;
+    color:#4CAF50;
+}

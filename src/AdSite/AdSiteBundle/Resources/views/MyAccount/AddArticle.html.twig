@@ -10,19 +10,21 @@
 {% endblock %}
 
 {% block navigation %}
-<ul>
-    <li><a class="logo" href="#home">AuPetitCoin</a></li>
-    <li><a href="http://localhost:8000/adsite/addarticle">DEPOSER UNE ANNONCE</a></li>
-    <li><a href="http://localhost:8000/adsite/welcome">OFFRES</a></li>
-    <li><a href="#about">MES ANNONCES</a></li>
-    <li class="connect"><a  href="http://localhost:8000/adsite/login">Se connecter</a></li>
-</ul>
+    <div id="nav">
+        <ul>
+            <li ><a  class="logo" href="#home">AuPetitCoin</a></li>
+            <li ><a  href="http://localhost:8000/adsite/addarticle">DEPOSER UNE ANNONCE</a></li>
+            <li ><a  href="http://localhost:8000/adsite/welcome">OFFRES</a></li>
+            <li ><a  href="#about">MES ANNONCES</a></li>
+            <li  class="connect"><a id="nav"href="http://localhost:8000/adsite/login">Mon compte</a></li>
+        </ul>
+    </div>
 {% endblock %}
 
 {% block body %}
 
     <div id="main">
-    <center>
+<center>
         <div id="block_form">
             <h1>Ajouter une annonce</h1>
             {{form(form, {'attr' : {'novalidate' : 'novalidate'}})}}
@@ -31,7 +33,7 @@
             </form>
         </div>
 
-    </center>
+</center>
 
     </div>
 {% endblock %}

@@ -19,6 +19,7 @@ class WelcomeController extends Controller
 {
     public function welcomeAction(Request $request)
     {
+        /* test session */
         $session = $request->getSession();
         $user = $session->get('user_login')[0]['id'];
        print_r($user);
@@ -26,7 +27,11 @@ class WelcomeController extends Controller
         {
             $user = "anonyme";
         }
-        return $this->render('AdSiteBundle:Default:welcomeTemp.html.twig',array('user' => $user));
+
+        $articlesAccess = new ArticlesManager($this->getDoctrine()->getManager());
+        $article_tab= $articlesAccess->getAllArticles();
+        //print_r($article_tab);
+        return $this->render('AdSiteBundle:Default:welcomeTemp.html.twig',array('article_tab' => $article_tab,'user'=>$user));
        // return $this->render('AdSiteBundle:welcomeTemp.html.twig');
     }
 }
