@@ -3,6 +3,7 @@
 namespace AdSite\AdSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Articles
@@ -25,6 +26,16 @@ class Articles
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=64)
+     *
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     *
+     * @Assert\Length(
+     *     min="2",
+     *     max="25",
+     *     minMessage="Le titre nécessite au minimum 2 caractères",
+     *     maxMessage="Le titre nécessite au maximum 25 caractères"
+     * )
+     *
      */
     private $title;
 
@@ -32,6 +43,7 @@ class Articles
      * @var string
      *
      * @ORM\Column(name="category", type="string", length=32)
+     *
      */
     private $category;
 
@@ -39,6 +51,15 @@ class Articles
      * @var string
      *
      * @ORM\Column(name="place", type="string", length=64)
+     *
+     *  @Assert\NotBlank(message="Le lieu est obligatoire")
+     *
+     * @Assert\Length(
+     *     min="2",
+     *     max="25",
+     *     minMessage="Le lieu nécessite au minimum 2 caractères",
+     *     maxMessage="Le lieu nécessite au maximum 25 caractères"
+     * )
      */
     private $place;
 
@@ -46,6 +67,7 @@ class Articles
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
+     *
      */
     private $date;
 
@@ -53,6 +75,12 @@ class Articles
      * @var float
      *
      * @ORM\Column(name="price", type="float")
+     *
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     *
+     * @Assert\Type(type="numeric", message="Le prix doit être un nombre")
+     *
+     * @Assert\GreaterThan(value = 0, message="Le prix doit être supérieur à 0")
      */
     private $price;
 
@@ -60,6 +88,9 @@ class Articles
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     *
+     * @Assert\NotBlank(message="La descritpion est obligatoire")
+     *
      */
     private $description;
 

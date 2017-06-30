@@ -2,7 +2,6 @@
 
 namespace AdSite\AdSiteBundle\Controller;
 
-
 use AdSite\AdSiteBundle\Entity\Articles;
 use AdSite\AdSiteBundle\Form\AddArticleFormType;
 use AdSite\AdSiteBundle\Manager\ArticlesManager;
@@ -25,7 +24,8 @@ class NewArticleController extends Controller
                 $picture_access = new PicturesManager($this->getDoctrine()->getManager());
 
                 $newArticle = $article_access->insertArticle($form);
-                $picture_access->insertPicture($newArticle->getId(), $form->get('photos')->getData());
+                if ($form->get('photos')->getData() != null)
+                    $picture_access->insertPicture($newArticle->getId(), $form->get('photos')->getData());
                 unset($article);
                 $article = new Articles();
                 $form = $this->createForm(AddArticleFormType::class, $article);
