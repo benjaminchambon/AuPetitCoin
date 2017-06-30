@@ -9,3 +9,7 @@ test:
 test_homepage:
     path:     /welcome
     defaults : { _controller: AdSiteBundle:Welcome:welcome}
+
+add_article:
+    path:      /addarticle
+    defaults : { _controller: AdSiteBundle:NewArticle:AddArticle}

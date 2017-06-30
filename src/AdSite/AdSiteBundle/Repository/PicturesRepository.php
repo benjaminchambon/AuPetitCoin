@@ -10,4 +10,12 @@ namespace AdSite\AdSiteBundle\Repository;
  */
 class PicturesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPicturesByArticle($idArticle){
+        $pictures = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Pictures a
+        WHERE a.id_article = :idArticle
+        ')->setParameter('idArticle', '%'.$idArticle.'%')->getResult();
+
+        return $pictures;
+    }
 }
