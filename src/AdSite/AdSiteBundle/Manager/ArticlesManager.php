@@ -81,4 +81,9 @@ class ArticlesManager
     {
         return $this->articleRepo->getArticlesByCategory($category);
     }
+
+    public function getArticlesByUserId($userId)
+    {
+        return $this->articleRepo->getArticlesByUserId($userId);
+    }
 }

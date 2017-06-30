@@ -18,4 +18,14 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 
         return $articles;
     }
+
+
+    public function getArticlesByUserId($userId){
+        $articles = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Articles a
+        WHERE a.userId = :userId
+        ')->setParameter('userId', '%'.$userId.'%')->getResult();
+
+        return $articles;
+    }
 }
