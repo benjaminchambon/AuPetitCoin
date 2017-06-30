@@ -15,17 +15,19 @@ class UsersManager
         $this->userRepo = $this->em->getRepository('AdSiteBundle:User');
     }
 
-    public function insertUser($data)
+    public function insertUser($form)
     {
         $user = new User();
-        $user->setLogin($data->getLogin());
-        $user->setPassword($data->getPassword());
-        $user->setPhone($data->getPhone());
-        $user->setEmail($data->getEmail());
-        $user->setCity($data->getCity());
+        $user->setLogin($form->get('login')->getData());
+        $user->setPassword($form->get('password')->getData());
+        $user->setPhone($form->get('phone')->getData());
+        $user->setEmail($form->get('email')->getData());
+        $user->setCity($form->get('city')->getData());
 
         $this->em->persist($user);
         $this->em->flush();
+
+        return $user;
     }
 
     public function getUserId($login, $password)

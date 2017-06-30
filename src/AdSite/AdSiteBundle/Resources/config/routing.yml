@@ -13,3 +13,7 @@ test_homepage:
 add_article:
     path:      /addarticle
     defaults : { _controller: AdSiteBundle:NewArticle:AddArticle}
+
+my_account:
+    path:     /myaccount
+    defaults:  { _controller: AdSiteBundle:MyAccount:myaccount}

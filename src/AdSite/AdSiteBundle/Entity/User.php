@@ -3,12 +3,15 @@
 namespace AdSite\AdSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AdSite\AdSiteBundle\Repository\UserRepository")
+ * @UniqueEntity(fields={"login"}, message="Le nom d'utilisateur existe déjà")
  */
 class User
 {
@@ -25,6 +28,16 @@ class User
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=64)
+     *
+     * @Assert\NotBlank(message="Le login est obligatoire")
+     *
+     * @Assert\Length(
+     *     min="5",
+     *     max="15",
+     *     minMessage="Le login nécessite au minimum 5 caractères",
+     *     maxMessage="Le login nécessite au maximum 15 caractères"
+     * )
+     *
      */
     private $login;
 
@@ -32,6 +45,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=128)
+     *
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
      */
     private $password;
 
@@ -39,6 +54,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=16)
+     *
+     * @Assert\NotBlank(message="Le téléphone est obligatoire")
      */
     private $phone;
 
@@ -46,6 +63,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=128)
+     *
+     * @Assert\NotBlank(message="L'email est obligatoire")
      */
     private $email;
 
@@ -53,6 +72,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=64)
+     *
+     * @Assert\NotBlank(message="La ville est obligatoire")
      */
     private $city;
 
