@@ -3,4 +3,7 @@
 {% block body %}
     Ajouter une annonce
     {{form(form)}}
+    <form action="{{ path('test_homepage') }}" onclick="return confirm('Etes-vous sûr de vouloir annuler ?')">
+        <input type="submit" value="Annuler" />
+    </form>
 {% endblock %}
