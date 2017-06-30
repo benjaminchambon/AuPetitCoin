@@ -76,7 +76,7 @@ class Articles
      *
      * @ORM\Column(name="price", type="float")
      *
-     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\NotBlank(message="Le prix est obligatoire")
      *
      * @Assert\Type(type="numeric", message="Le prix doit être un nombre")
      *

@@ -8,6 +8,7 @@
 {% block stylesheets %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('css/navBarStyle.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/loginStyle.css') }}" />
 {% endblock %}
 
 {% block navigation %}
@@ -21,5 +22,14 @@
 {% endblock %}
 
 {% block body %}
-    {{form(form)}}
+    <div id="main">
+        <center>
+        <div id="block_form">
+            <h1>CONNEXION</h1>
+
+            {{form(form)}}
+
+        </div>
+        </center>
+    </div>
 {% endblock %}

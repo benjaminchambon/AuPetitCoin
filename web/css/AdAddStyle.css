@@ -13,7 +13,7 @@
     padding: 40px;
 }
 
-input[type=text], input[type=password]{
+input[type=text]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -23,7 +23,7 @@ input[type=text], input[type=password]{
     box-sizing: border-box;
 }
 
-.but_connect {
+.but_connect{
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -33,7 +33,6 @@ input[type=text], input[type=password]{
     border-radius: 4px;
     cursor: pointer;
 }
-
 
 h1 {
     font-size: 16px;
