@@ -19,15 +19,17 @@ class NewArticleController extends Controller
         $form = $this->createForm(AddArticleFormType::class, $article);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $article_access = new ArticlesManager($this->getDoctrine()->getManager());
-            $picture_access = new PicturesManager($this->getDoctrine()->getManager());
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('Enregistrer')->isClicked()) {
+                $article_access = new ArticlesManager($this->getDoctrine()->getManager());
+                $picture_access = new PicturesManager($this->getDoctrine()->getManager());
 
-            $newArticle = $article_access->insertArticle($form);
-            $picture_access->insertPicture($newArticle->getId(), $form->get('photos')->getData());
-            unset($article);
-            $article = new Articles();
-            $form = $this->createForm(AddArticleFormType::class, $article);
+                $newArticle = $article_access->insertArticle($form);
+                $picture_access->insertPicture($newArticle->getId(), $form->get('photos')->getData());
+                unset($article);
+                $article = new Articles();
+                $form = $this->createForm(AddArticleFormType::class, $article);
+            }
         }
 
         return $this->render('AdSiteBundle:MyAccount:AddArticle.html.twig', array('form' => $form->createView()));

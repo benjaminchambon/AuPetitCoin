@@ -17,22 +17,22 @@ class AddArticleFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, array('label' => 'Titre'))
             ->add('category', ChoiceType::class
                 , array(
                     'choices' => array(
-                        'Maybe' => null,
-                        'Yes' => true,
-                        'No' => false,
+                        'Automobile' => 'Automobile',
+                        'Informatique' => 'Informatique',
+                        'Emplois' => 'Emplois',
                     ),
                 ), array('mapped' => false)
             )
-            ->add('place', TextType::class)
-            ->add('price', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('photos', FileType::class, array('mapped' => false))
-            ->add('Annuler', SubmitType::class, array('attr' => array('class' => 'but_connect')))
-            ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'but_connect')))
+
+            ->add('place', TextType::class, array('label' => 'Lieu'))
+            ->add('price', TextType::class, array('label' => 'Prix'))
+            ->add('description', TextareaType::class, array('label' => 'Description'))
+            ->add('photos', FileType::class, array('mapped' => false), array('label' => 'Photos'),array('attr' => array('class' => 'but_connect')) )
+            ->add('Enregistrer', SubmitType::class, array('label' => 'Ajouter'))
             ->getForm();
     }
 
