@@ -3,6 +3,7 @@
 namespace AdSite\AdSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AdSite\AdSiteBundle\Repository\UserRepository")
+ * @UniqueEntity(fields={"login"}, message="Le nom d'utilisateur existe déjà")
  */
 class User
 {
