@@ -15,9 +15,9 @@ class LoginFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pseudo', TextType::class)
-            ->add('password', PasswordType::class)
-            ->add('connexion', SubmitType::class)
+            ->add('pseudo', TextType::class, array('label' => 'Login', 'attr' => array('class' => 'login')))
+            ->add('password', PasswordType::class, array('label' => 'Password', 'attr' => array('class' => 'pass')))
+            ->add('connexion', SubmitType::class,array('attr' => array('class' => 'Bconnect')))
             ->getForm();
     }
 
