@@ -19,4 +19,15 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
 
         return count($user) > 0;
     }
+
+    public function getUserId($login, $password){
+        $user_id = $this->getEntityManager()->createQuery('
+        SELECT a.id FROM AdSiteBundle:User a
+        WHERE a.login = :login
+        AND a.password = :password
+        ')->setParameters(array('login' => $login, 'password' => $password))->getResult();
+
+        return $user_id;
+    }
+
 }

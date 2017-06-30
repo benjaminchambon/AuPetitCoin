@@ -28,6 +28,11 @@ class UsersManager
         $this->em->flush();
     }
 
+    public function getUserId($login, $password)
+    {
+        return $this->userRepo->getUserId($login, $password);
+    }
+
     public function deleteUser($id)
     {
         $post = $this->userRepo->find($id);
