@@ -6,6 +6,7 @@
 {% block stylesheets %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('css/navBarStyle.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/AdAddStyle.css') }}" />
 {% endblock %}
 
 {% block navigation %}
@@ -19,6 +20,12 @@
 {% endblock %}
 
 {% block body %}
-    Ajouter une annonce
-    {{form(form)}}
+    <div id="main">
+    <center>
+        <div id="block_form">
+            <h1>Ajouter une annonce</h1>
+            {{form(form)}}
+        </div>
+    </center>
+    </div>
 {% endblock %}

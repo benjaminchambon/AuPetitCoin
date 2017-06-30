@@ -31,8 +31,8 @@ class AddArticleFormType extends AbstractType
             ->add('price', TextType::class)
             ->add('description', TextareaType::class)
             ->add('photos', FileType::class, array('mapped' => false))
-            ->add('Annuler', SubmitType::class)
-            ->add('Enregistrer', SubmitType::class)
+            ->add('Annuler', SubmitType::class, array('attr' => array('class' => 'but_connect')))
+            ->add('Enregistrer', SubmitType::class, array('attr' => array('class' => 'but_connect')))
             ->getForm();
     }
 
