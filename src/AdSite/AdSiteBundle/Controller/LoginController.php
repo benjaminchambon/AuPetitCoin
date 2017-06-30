@@ -28,7 +28,7 @@ class LoginController extends Controller
             }
         }
 
-        return $this->render('AdSiteBundle:Default:index.html.twig', array('form' => $form->createView()));
+        return $this->render('AdSiteBundle:Login:login.html.twig', array('form' => $form->createView()));
 
 
     }
