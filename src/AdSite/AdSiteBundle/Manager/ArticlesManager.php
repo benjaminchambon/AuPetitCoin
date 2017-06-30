@@ -22,18 +22,20 @@ class ArticlesManager
         $this->articleRepo = $this->em->getRepository('AdSiteBundle:Articles');
     }
 
-    public function insertArticle($data)
+    public function insertArticle($form)
     {
         $article = new Articles();
-        $article->setTitle($data->getTitle());
-        $article->setCategory($data->getCategory());
-        $article->setPlace($data->getPlace());
+        $article->setTitle($form->get('title')->getData());
+        $article->setCategory($form->get('category')->getData());
+        $article->setPlace($form->get('place')->getData());
         $article->setDate(new \DateTime('today'));
-        $article->setPrice($data->getPrice());
-        $article->setDescription($data->getDescription());
+        $article->setPrice($form->get('price')->getData());
+        $article->setDescription($form->get('description')->getData());
 
         $this->em->persist($article);
         $this->em->flush();
+
+        return $article;
     }
 
     public function deleteArticle($id)
@@ -67,7 +69,7 @@ class ArticlesManager
             $post->setDescription($data->getDescription());
 
         $this->em->flush();
-        return true;
+        return $post;
     }
 
     public function getAllArticles()
