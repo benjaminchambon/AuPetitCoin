@@ -4,6 +4,7 @@ namespace AdSite\AdSiteBundle\Form;
 
 use AdSite\AdSiteBundle\Entity\Connexion;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -15,7 +16,7 @@ class LoginFormType extends AbstractType
     {
         $builder
             ->add('pseudo', TextType::class)
-            ->add('password', TextType::class)
+            ->add('password', PasswordType::class)
             ->add('connexion', SubmitType::class)
             ->getForm();
     }

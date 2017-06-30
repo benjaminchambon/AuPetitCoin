@@ -1,23 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    formulaire :
     {{form(form)}}
-    {{ pseudo }}
-    Liste des articles :
-    {% for article in articles %}
-        {{ article.title }}</<br>
-        {{ article.description }}
-        {{ article.price }}
-        {{  article.date|date('Y-m-d') }}
-    {% endfor %}
-{% endblock %}
-{% block navigation %}
-    <ul>
-        <li><a href="#">xx</a></li>
-        <li><a href="#">xx</a></li>
-        <li><a href="#">xx</a></li>
-    </ul>
 {% endblock %}
 
 

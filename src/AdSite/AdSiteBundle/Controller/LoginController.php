@@ -2,9 +2,9 @@
 
 namespace AdSite\AdSiteBundle\Controller;
 
-use AdSite\AdSiteBundle\Entity\Articles;
+
 use AdSite\AdSiteBundle\Entity\Connexion;
-use AdSite\AdSiteBundle\Manager\ArticlesManager;
+use AdSite\AdSiteBundle\Manager\UsersManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AdSite\AdSiteBundle\Form\LoginFormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,28 +18,18 @@ class LoginController extends Controller
         $form = $this->createForm(LoginFormType::class, $connexion);
         $form->handleRequest($request);
 
-        $pseudo = '';
-        $articles = [];
-
         if ($form->isValid()) {
-            $article_access = new ArticlesManager($this->getDoctrine()->getManager());
-            //$pseudo = $form->get('pseudo')->getData();
-
-            $articleTest = new Articles();
-            $articleTest->setTitle('ben');
-            $articleTest->setCategory('ben');
-            $articleTest->setPlace('ben');
-            $articleTest->setPrice(2.0);
-            $articleTest->setDescription('ben');
-
-            $article_access->updateArticle(1, $articleTest);
-            //$this->article_access->insertArticle($pseudo);
-            //$articles = $article_access->getAllArticles();
-            //$articles = $article_access->getArticlesByCategory('voiture');
-            // $this->article_access->deleteArticle(8);
+            $user_access = new UsersManager($this->getDoctrine()->getManager());
+            $login = $form->get('pseudo')->getData();
+            $password = $form->get('password')->getData();
+            if ($user_access->checkUserExist($login, $password) > 0){
+                //return $this->render('AdSiteBundle:Default:welcomeTemp.html.twig');
+                return $this->redirectToRoute('test_homepage');
+            }
         }
 
-        return $this->render('AdSiteBundle:Default:index.html.twig', array('form' => $form->createView(), 'pseudo' => $pseudo, 'articles' => $articles));
-    }
+        return $this->render('AdSiteBundle:Default:index.html.twig', array('form' => $form->createView()));
 
+
+    }
 }
