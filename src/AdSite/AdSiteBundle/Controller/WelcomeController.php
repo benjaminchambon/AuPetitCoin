@@ -17,10 +17,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class WelcomeController extends Controller
 {
-    public function welcomeAction()
+    public function welcomeAction(Request $request)
     {
-
-        return $this->render('AdSiteBundle:Default:welcomeTemp.html.twig');
+        $session = $request->getSession();
+        $user = $session->get('user_login')[0]['id'];
+       print_r($user);
+        if ($user == null)
+        {
+            $user = "anonyme";
+        }
+        return $this->render('AdSiteBundle:Default:welcomeTemp.html.twig',array('user' => $user));
        // return $this->render('AdSiteBundle:welcomeTemp.html.twig');
     }
 }

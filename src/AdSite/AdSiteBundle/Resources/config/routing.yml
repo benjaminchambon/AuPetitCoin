@@ -2,7 +2,7 @@ ad_site_homepage:
     path:     /hello/{name}
     defaults: { _controller: AdSiteBundle:Default:index }
 
-test:
+test_login:
     path:     /login
     defaults : { _controller: AdSiteBundle:Login:login}
 
