@@ -3,6 +3,7 @@
 namespace AdSite\AdSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -25,6 +26,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=64)
+     *
+     * @Assert\NotBlank(message="Le login est obligatoire")
      */
     private $login;
 
@@ -32,6 +35,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=128)
+     *
+     * @Assert\NotBlank(message="Le password est obligatoire")
      */
     private $password;
 
@@ -46,6 +51,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=128)
+     *
+     * @Assert\NotBlank(message="L'email est obligatoire")
      */
     private $email;
 
@@ -53,6 +60,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=64)
+     *
+     * @Assert\NotBlank(message="La ville est obligatoire")
      */
     private $city;
 

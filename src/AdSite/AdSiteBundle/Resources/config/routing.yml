@@ -13,3 +13,8 @@ test_homepage:
 add_article:
     path:      /addarticle
     defaults : { _controller: AdSiteBundle:NewArticle:AddArticle}
+
+
+inscription:
+    path:      /inscription
+    defaults : { _controller: AdSiteBundle:NewArticle:AddArticle}
