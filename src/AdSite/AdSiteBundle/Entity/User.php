@@ -28,6 +28,14 @@ class User
      * @ORM\Column(name="login", type="string", length=64)
      *
      * @Assert\NotBlank(message="Le login est obligatoire")
+     *
+     * @Assert\Length(
+     *     min="5",
+     *     max="15",
+     *     minMessage="Le login nécessite au minimum 5 caractères",
+     *     maxMessage="Le login nécessite au maximum 15 caractères"
+     * )
+     *
      */
     private $login;
 
@@ -36,7 +44,7 @@ class User
      *
      * @ORM\Column(name="password", type="string", length=128)
      *
-     * @Assert\NotBlank(message="Le password est obligatoire")
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
      */
     private $password;
 
@@ -44,6 +52,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=16)
+     *
+     * @Assert\NotBlank(message="Le téléphone est obligatoire")
      */
     private $phone;
 
