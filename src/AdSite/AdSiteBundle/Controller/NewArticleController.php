@@ -42,7 +42,7 @@ class NewArticleController extends Controller
                     $array_pic[] = $pic;
                     $art = $article_access->insertArticle($form, $user[0], $array_pic);
 
-                    $pic->setArticle($art);
+                    $picture_access->updatePicture($pic->getId(),null, $art);
                 }
 
                 unset($article);

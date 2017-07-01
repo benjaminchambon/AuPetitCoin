@@ -40,14 +40,17 @@ class PicturesManager
         return true;
     }
 
-    public function updateArticle($id, $data)
+    public function updatePicture($id, $data, $article)
     {
         $post = $this->picturesRepo->find($id);
         if (!$post) {
             return false;
         }
-        if ($data->getPath() != null)
-            $post->setPath($data->getPath());
+        if($data != null) {
+            if ($data->getPath() != null)
+                $post->setPath($data->getPath());
+        }
+        $post->setArticle($article);
         $this->em->flush();
         return true;
     }

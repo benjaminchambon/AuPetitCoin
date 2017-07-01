@@ -61,7 +61,7 @@ class Pictures
 
 
     public function setArticle(Articles $article){
-        $this->$article = $article;
+        $this->article = $article;
     }
 
     public function getArticle(){
