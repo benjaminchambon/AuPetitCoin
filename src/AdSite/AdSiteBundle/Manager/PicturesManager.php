@@ -18,7 +18,6 @@ class PicturesManager
     public function insertPicture($data)
     {
         $picture = new Pictures();
-        $picture->setIdArticle(15555);
         $picture->setPath($data->getClientOriginalName());
         $picture->setFile($data);
         $picture->upload();

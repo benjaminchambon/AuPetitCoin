@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use AdSite\AdSiteBundle\Entity\Articles;
 
-
 /**
  * Pictures
  *
@@ -25,20 +24,16 @@ class Pictures
     private $id;
 
     /**
-     * Many Features have One Product.
-     *  @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
-     *  @ORM\JoinColumn(name="id_article", referencedColumnName="id")
-     */
-    private $article;
-
-
-
-    /**
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $path;
+    /**
+     * @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
+     * @ORM\JoinColumn(name="idArticle", referencedColumnName="id")
+     */
+    private $article;
 
     /**
      * Get id
@@ -50,40 +45,16 @@ class Pictures
         return $this->id;
     }
 
-
-    public function setArticle(Articles $article){
+    public function setArticle(Articles $article)
+    {
         $this->article = $article;
     }
 
-    public function getArticle(){
+    public function getArticle()
+    {
         return $this->article;
-        return $this;
     }
 
-
-    /**
-     * Set idArticle
-     *
-     * @param float $idArticle
-     *
-     * @return Pictures
-     */
-    public function setIdArticle($idArticle)
-    {
-        $this->idArticle = $idArticle;
-
-        return $this;
-    }
-
-    /**
-     * Get idArticle
-     *
-     * @return float
-     */
-    public function getIdArticle()
-    {
-        return $this->idArticle;
-    }
 
     /**
      * Set path
@@ -95,7 +66,6 @@ class Pictures
     public function setPath($path)
     {
         $this->path = $path;
-
         return $this;
     }
 
@@ -109,9 +79,9 @@ class Pictures
         return $this->path;
     }
 
-
-
-
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
     private $file;
 
     /**
@@ -134,26 +104,25 @@ class Pictures
         return $this->file;
     }
 
-
     public function getAbsolutePath()
     {
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+            : $this->getUploadRootDir() . '/' . $this->path;
     }
 
     public function getWebPath()
     {
         return null === $this->path
             ? null
-            : $this->getUploadDir().'/'.$this->path;
+            : $this->getUploadDir() . '/' . $this->path;
     }
 
     protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir()
@@ -169,23 +138,17 @@ class Pictures
         if (null === $this->getFile()) {
             return;
         }
-
         // use the original file name here but you should
         // sanitize it at least to avoid any security issues
-
         // move takes the target directory and then the
         // target filename to move to
         $this->getFile()->move(
             $this->getUploadRootDir(),
             $this->getFile()->getClientOriginalName()
         );
-
         // set the path property to the filename where you've saved the file
         $this->path = $this->getFile()->getClientOriginalName();
-
         // clean up the file property as you won't need it anymore
         $this->file = null;
     }
-
 }
-

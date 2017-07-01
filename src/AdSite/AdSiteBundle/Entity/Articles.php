@@ -1,10 +1,7 @@
 <?php
-
 namespace AdSite\AdSiteBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * Articles
  *
@@ -21,7 +18,6 @@ class Articles
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
@@ -38,14 +34,11 @@ class Articles
      *
      */
     private $title;
-
     /**
      * @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
-
-
     /**
      * @var string
      *
@@ -53,7 +46,6 @@ class Articles
      *
      */
     private $category;
-
     /**
      * @var string
      *
@@ -69,7 +61,6 @@ class Articles
      * )
      */
     private $place;
-
     /**
      * @var \DateTime
      *
@@ -77,7 +68,6 @@ class Articles
      *
      */
     private $date;
-
     /**
      * @var float
      *
@@ -90,7 +80,6 @@ class Articles
      * @Assert\GreaterThan(value = 0, message="Le prix doit être supérieur à 0")
      */
     private $price;
-
     /**
      * @var string
      *
@@ -100,45 +89,31 @@ class Articles
      *
      */
     private $description;
-
-
     /**
      * @ORM\OneToMany(targetEntity="AdSite\AdSiteBundle\Entity\Pictures", mappedBy="article", cascade={"persist"})
      */
     private $picture;
-
-
     public function getId(){
         return $this->id;
     }
-
-
     public function setUser(User $user)
     {
         $this->user = $user;
-
         return $this;
     }
-
     public function getUser()
     {
         return $this->user;
     }
-
-
     public function setPicture($picture)
     {
         $this->picture = $picture;
-
         return $this;
     }
-
     public function getPicture()
     {
         return $this->picture;
     }
-
-
     /**
      * Set title
      *
@@ -149,10 +124,8 @@ class Articles
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
-
     /**
      * Get title
      *
@@ -162,7 +135,6 @@ class Articles
     {
         return $this->title;
     }
-
     /**
      * Set category
      *
@@ -173,10 +145,8 @@ class Articles
     public function setCategory($category)
     {
         $this->category = $category;
-
         return $this;
     }
-
     /**
      * Get category
      *
@@ -186,7 +156,6 @@ class Articles
     {
         return $this->category;
     }
-
     /**
      * Set place
      *
@@ -197,10 +166,8 @@ class Articles
     public function setPlace($place)
     {
         $this->place = $place;
-
         return $this;
     }
-
     /**
      * Get place
      *
@@ -210,7 +177,6 @@ class Articles
     {
         return $this->place;
     }
-
     /**
      * Set date
      *
@@ -221,10 +187,8 @@ class Articles
     public function setDate($date)
     {
         $this->date = $date;
-
         return $this;
     }
-
     /**
      * Get date
      *
@@ -234,7 +198,6 @@ class Articles
     {
         return $this->date;
     }
-
     /**
      * Set price
      *
@@ -245,10 +208,8 @@ class Articles
     public function setPrice($price)
     {
         $this->price = $price;
-
         return $this;
     }
-
     /**
      * Get price
      *
@@ -258,7 +219,6 @@ class Articles
     {
         return $this->price;
     }
-
     /**
      * Set description
      *
@@ -269,10 +229,8 @@ class Articles
     public function setDescription($description)
     {
         $this->description = $description;
-
         return $this;
     }
-
     /**
      * Get description
      *
@@ -283,4 +241,3 @@ class Articles
         return $this->description;
     }
 }
-
