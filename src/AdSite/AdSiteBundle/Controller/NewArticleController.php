@@ -33,7 +33,6 @@ class NewArticleController extends Controller
 
 
                 if ($form->get('photos')->getData() != null) {
-                    print_r($form->get('photos')->getData());
 
                     //upload sur le serveur et insertion dans la base
                     $pic = $picture_access->insertPicture( $form->get('photos')->getData());
