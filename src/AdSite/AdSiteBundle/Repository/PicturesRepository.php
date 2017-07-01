@@ -18,4 +18,13 @@ class PicturesRepository extends \Doctrine\ORM\EntityRepository
 
         return $pictures;
     }
+
+    public function getPicturesById($id){
+        $pictures = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Pictures a
+        WHERE a.id = :id
+        ')->setParameter('id', '%'.$id.'%')->getResult();
+
+        return $pictures;
+    }
 }

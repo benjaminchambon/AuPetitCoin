@@ -22,7 +22,6 @@ class WelcomeController extends Controller
         /* test session */
         $session = $request->getSession();
         $user = $session->get('user_login')[0]['id'];
-        print_r($user);
         if ($user == null) {
             $user = "anonyme";
         }

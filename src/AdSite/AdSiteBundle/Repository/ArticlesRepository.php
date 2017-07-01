@@ -23,8 +23,9 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
     public function getArticlesByUserId($userId){
         $articles = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Articles a
-        WHERE a.userId = :userId
-        ')->setParameter('userId', '%'.$userId.'%')->getResult();
+        WHERE EXISTS ( SELECT b FROM AdSiteBundle:User b 
+        WHERE b.id = :userId)
+        ')->setParameters(array('userId' => $userId))->getResult();
 
         return $articles;
     }

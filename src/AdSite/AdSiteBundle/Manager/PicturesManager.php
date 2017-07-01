@@ -15,14 +15,16 @@ class PicturesManager
         $this->picturesRepo = $this->em->getRepository('AdSiteBundle:Pictures');
     }
 
-    public function insertPicture($idArticle, $url)
+    public function insertPicture($url)
     {
         $picture = new Pictures();
-        $picture->setIdArticle($idArticle);
+        $picture->setIdArticle(15555);
         $picture->setPath($url);
 
         $this->em->persist($picture);
         $this->em->flush();
+
+        return $picture;
     }
 
     public function deletePicture($id)
@@ -51,6 +53,10 @@ class PicturesManager
     public function getPicturesByArticle($idArticle)
     {
         return $this->picturesRepo->getPicturesByArticle($idArticle);
+    }
+
+    public function getPicturesById($id){
+        return $this->picturesRepo->getPicturesById($id);
     }
 
 
