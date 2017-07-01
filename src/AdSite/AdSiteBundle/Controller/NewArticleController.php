@@ -34,12 +34,15 @@ class NewArticleController extends Controller
 
                 if ($form->get('photos')->getData() != null) {
                     print_r($form->get('photos')->getData());
-                    echo $form->get('photos')->getData()->getClientOriginalName();
+
                     //upload sur le serveur et insertion dans la base
-                    $pic = $picture_access->insertPicture( $form->get('photos')->getData()->getClientOriginalName());
+                    $pic = $picture_access->insertPicture( $form->get('photos')->getData());
+
 
                     $array_pic[] = $pic;
-                    $article_access->insertArticle($form, $user[0], $array_pic);
+                    $art = $article_access->insertArticle($form, $user[0], $array_pic);
+
+                    $pic->setArticle($art);
                 }
 
                 unset($article);

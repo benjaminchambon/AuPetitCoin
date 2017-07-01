@@ -3,6 +3,7 @@
 namespace AdSite\AdSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use AdSite\AdSiteBundle\Entity\Articles;
 
 
@@ -42,7 +43,11 @@ class Pictures
     private $path;
 
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
+     * @ORM\JoinColumn(name="idArticle", referencedColumnName="id")
+     */
+    private $article;
 
     /**
      * Get id
@@ -52,6 +57,16 @@ class Pictures
     public function getId()
     {
         return $this->id;
+    }
+
+
+    public function setArticle(Articles $article){
+        $this->$article = $article;
+    }
+
+    public function getArticle(){
+        return $this->article;
+        return $this;
     }
 
 
@@ -115,7 +130,7 @@ class Pictures
      *
      * @param UploadedFile $file
      */
-    public function setFile(UploadedFile $file = null)
+    public function setFile($file)
     {
         $this->file = $file;
     }
@@ -156,7 +171,7 @@ class Pictures
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return 'uploads';
     }
 
     public function upload()
