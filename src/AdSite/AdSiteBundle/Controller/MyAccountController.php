@@ -12,6 +12,7 @@ class MyAccountController extends Controller
 {
     public function myaccountAction(Request $request)
     {
+        echo 'sdfqsdsfd';
         $session = $request->getSession();
         $user_id = $session->get('user_login')[0]['id'];
 

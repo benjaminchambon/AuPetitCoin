@@ -104,18 +104,14 @@ class Pictures
         return $this->file;
     }
 
-    public function getAbsolutePath()
+    public function getAbsolutePath($path)
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir() . '/' . $this->path;
+        return  __DIR__ . '/../../../../web/' . $this->getUploadDir() . '/' . $path;
     }
 
-    public function getWebPath()
+    public function getWebPath($path)
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir() . '/' . $this->path;
+        return $this->getUploadDir() . '/' . $path;
     }
 
     protected function getUploadRootDir()
@@ -147,7 +143,7 @@ class Pictures
             $this->getFile()->getClientOriginalName()
         );
         // set the path property to the filename where you've saved the file
-        $this->path = $this->getFile()->getClientOriginalName();
+     //   $this->path = $this->getFile()->getClientOriginalName();
         // clean up the file property as you won't need it anymore
         $this->file = null;
     }

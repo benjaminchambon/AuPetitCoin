@@ -32,8 +32,10 @@
                             {{ article.picture|length }}
                             <div id="elt">
                                 <div class="asideg">
+                                 {% for pic in article.picture %}
                                     <img width="158" heigth="158"
-                                         src="//img6.leboncoin.fr/ad-thumb/76bc51b6d5f8f398c1fa9f6ac91bc9de129df8da.jpg">
+                                         src="{{ asset(pic.path) }}">
+                                 {% endfor %}
                                 </div>
                                 <div class="asided">
                                     <div class="title">{{ article.title }}</div></br>

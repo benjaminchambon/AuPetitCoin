@@ -96,15 +96,18 @@ class Articles
     public function getId(){
         return $this->id;
     }
+
     public function setUser(User $user)
     {
         $this->user = $user;
         return $this;
     }
+
     public function getUser()
     {
         return $this->user;
     }
+
     public function setPicture($picture)
     {
         $this->picture = $picture;

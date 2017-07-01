@@ -18,8 +18,10 @@ class PicturesManager
     public function insertPicture($data)
     {
         $picture = new Pictures();
-        $picture->setPath($data->getClientOriginalName());
+
         $picture->setFile($data);
+        $picture->setPath($picture->getWebPath($data->getClientOriginalName()));
+       // $picture->setPath("aieaieaie");
         $picture->upload();
         //$form->get('photos')->getData()->move($dir_path,$form->get('photos')->getData()->getClientOriginalName())
         $this->em->persist($picture);

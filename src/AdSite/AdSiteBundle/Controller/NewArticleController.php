@@ -38,7 +38,6 @@ class NewArticleController extends Controller
                     $pic = $picture_access->insertPicture( $form->get('photos')->getData());
 
 
-
                     $array_pic[] = $pic;
                     $art = $article_access->insertArticle($form, $user[0], $array_pic);
 
