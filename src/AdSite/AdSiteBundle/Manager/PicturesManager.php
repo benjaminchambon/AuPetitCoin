@@ -15,12 +15,14 @@ class PicturesManager
         $this->picturesRepo = $this->em->getRepository('AdSiteBundle:Pictures');
     }
 
-    public function insertPicture($url)
+    public function insertPicture($data)
     {
         $picture = new Pictures();
         $picture->setIdArticle(15555);
-        $picture->setPath($url);
-
+        $picture->setPath($data->getClientOriginalName());
+        $picture->setFile($data);
+        $picture->upload();
+        //$form->get('photos')->getData()->move($dir_path,$form->get('photos')->getData()->getClientOriginalName())
         $this->em->persist($picture);
         $this->em->flush();
 
