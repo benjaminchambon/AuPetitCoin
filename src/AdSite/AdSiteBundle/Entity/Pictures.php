@@ -25,13 +25,11 @@ class Pictures
     private $id;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="id_article", type="float")
+     * Many Features have One Product.
+     *  @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
+     *  @ORM\JoinColumn(name="id_article", referencedColumnName="id")
      */
-    private $idArticle;
-
-
+    private $article;
 
 
 
@@ -41,13 +39,6 @@ class Pictures
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $path;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
-     * @ORM\JoinColumn(name="idArticle", referencedColumnName="id")
-     */
-    private $article;
 
     /**
      * Get id
@@ -120,9 +111,7 @@ class Pictures
 
 
 
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
+
     private $file;
 
     /**
