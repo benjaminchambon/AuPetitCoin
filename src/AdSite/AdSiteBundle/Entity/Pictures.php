@@ -24,11 +24,11 @@ class Pictures
     private $id;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="id_article", type="float")
+     * Many Features have One Product.
+     *  @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
+     *  @ORM\JoinColumn(name="id_article", referencedColumnName="id")
      */
-    private $idArticle;
+    private $article;
 
 
 
@@ -39,6 +39,7 @@ class Pictures
      *
      * @ORM\Column(name="path", type="string", length=255)
      */
+
     private $path;
 
 
@@ -105,9 +106,7 @@ class Pictures
 
 
 
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
+
     private $file;
 
     /**
@@ -115,7 +114,7 @@ class Pictures
      *
      * @param UploadedFile $file
      */
-    public function setFile(UploadedFile $file = null)
+    public function setFile($file)
     {
         $this->file = $file;
     }
@@ -156,7 +155,7 @@ class Pictures
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return 'uploads';
     }
 
     public function upload()

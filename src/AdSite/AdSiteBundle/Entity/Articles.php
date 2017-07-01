@@ -122,7 +122,7 @@ class Articles
     }
 
 
-    public function setPicture(Pictures $picture)
+    public function setPicture($picture)
     {
         $this->picture = $picture;
 
