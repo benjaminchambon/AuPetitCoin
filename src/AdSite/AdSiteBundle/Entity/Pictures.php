@@ -3,6 +3,7 @@
 namespace AdSite\AdSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use AdSite\AdSiteBundle\Entity\Articles;
 
 
@@ -43,7 +44,11 @@ class Pictures
     private $path;
 
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
+     * @ORM\JoinColumn(name="idArticle", referencedColumnName="id")
+     */
+    private $article;
 
     /**
      * Get id
@@ -53,6 +58,16 @@ class Pictures
     public function getId()
     {
         return $this->id;
+    }
+
+
+    public function setArticle(Articles $article){
+        $this->$article = $article;
+    }
+
+    public function getArticle(){
+        return $this->article;
+        return $this;
     }
 
 

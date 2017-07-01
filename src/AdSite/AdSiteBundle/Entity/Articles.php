@@ -103,10 +103,14 @@ class Articles
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AdSite\AdSiteBundle\Entity\Pictures", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="AdSite\AdSiteBundle\Entity\Pictures", mappedBy="article", cascade={"persist"})
      */
     private $picture;
 
+
+    public function getId(){
+        return $this->id;
+    }
 
 
     public function setUser(User $user)
