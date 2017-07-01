@@ -3,6 +3,8 @@
 namespace AdSite\AdSiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AdSite\AdSiteBundle\Entity\Articles;
+
 
 /**
  * Pictures
@@ -28,12 +30,18 @@ class Pictures
      */
     private $idArticle;
 
+
+
+
+
     /**
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
      */
     private $path;
+
+
 
 
     /**
@@ -45,6 +53,7 @@ class Pictures
     {
         return $this->id;
     }
+
 
     /**
      * Set idArticle

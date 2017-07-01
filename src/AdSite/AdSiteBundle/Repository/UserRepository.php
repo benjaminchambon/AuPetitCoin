@@ -30,4 +30,13 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $user_id;
     }
 
+    public function getUser($id){
+        $user = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:User a
+        WHERE a.id = :id
+        ')->setParameters(array('id' => $id))->getResult();
+
+        return $user;
+    }
+
 }

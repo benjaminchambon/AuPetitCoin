@@ -40,6 +40,13 @@ class Articles
     private $title;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="category", type="string", length=32)
@@ -96,14 +103,37 @@ class Articles
 
 
     /**
-     * Get id
-     *
-     * @return int
+     * @ORM\OneToMany(targetEntity="AdSite\AdSiteBundle\Entity\Pictures", mappedBy="article")
      */
-    public function getId()
+    private $picture;
+
+
+
+    public function setUser(User $user)
     {
-        return $this->id;
+        $this->user = $user;
+
+        return $this;
     }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
+    public function setPicture(Pictures $picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
 
     /**
      * Set title

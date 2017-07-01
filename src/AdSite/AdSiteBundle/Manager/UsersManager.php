@@ -76,4 +76,8 @@ class UsersManager
         return $this->userRepo->checkUserExist($login, $password);
     }
 
+    public function getUser($id){
+        return $this->userRepo->getUser($id);
+    }
+
 }

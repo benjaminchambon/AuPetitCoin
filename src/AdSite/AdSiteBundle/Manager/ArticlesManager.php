@@ -22,7 +22,7 @@ class ArticlesManager
         $this->articleRepo = $this->em->getRepository('AdSiteBundle:Articles');
     }
 
-    public function insertArticle($form)
+    public function insertArticle($form, $user, $arraypicture)
     {
         $article = new Articles();
         $article->setTitle($form->get('title')->getData());
@@ -31,7 +31,8 @@ class ArticlesManager
         $article->setDate(new \DateTime('today'));
         $article->setPrice($form->get('price')->getData());
         $article->setDescription($form->get('description')->getData());
-
+        $article->setUser($user);
+        $article->setPicture($arraypicture);
         $this->em->persist($article);
         $this->em->flush();
 
