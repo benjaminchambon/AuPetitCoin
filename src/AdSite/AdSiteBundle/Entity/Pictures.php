@@ -25,13 +25,18 @@ class Pictures
     private $id;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="id_article", type="float")
+     */
+    private $idArticle;
+
+    /**
      * Many Features have One Product.
      *  @ORM\ManyToOne(targetEntity="AdSite\AdSiteBundle\Entity\Articles", inversedBy="picture")
-     *  @ORM\JoinColumn(name="id_article", referencedColumnName="id")
+     *  @ORM\JoinColumn(name="idarticle", referencedColumnName="id")
      */
     private $article;
-
-
 
     /**
      * @var string
