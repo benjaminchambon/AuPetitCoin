@@ -88,8 +88,12 @@ class ArticlesManager
         return $this->articleRepo->getArticlesByUserId($userId);
     }
 
+
     public function getArticleById($id)
     {
         return $this->articleRepo->getArticleById($id);
+}
+    public function getArticlesFiltered($keywords, $category, $city){
+        return $this->articleRepo->getArticlesFiltered($keywords, $category, $city);
     }
 }

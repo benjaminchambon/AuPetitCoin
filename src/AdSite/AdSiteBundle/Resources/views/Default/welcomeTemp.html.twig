@@ -21,6 +21,7 @@
             <li  class="connect"><a id="nav"href="{{ path('test_login') }}">Mon compte</a></li>
         </ul>
     </div>
+    {{form(form, {'attr' : {'novalidate' : 'novalidate'}})}}
 {% endblock %}
 
 {% block body %}
@@ -41,6 +42,7 @@
                                         <img
                                              src="{{ asset(chemin.path) }}">
                                         {% endif %}
+
                                 </div>
                                 <div class="asided">
                                     <div class="title">{{ article.title }}</div></br>

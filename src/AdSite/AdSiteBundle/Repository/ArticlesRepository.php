@@ -10,17 +10,19 @@ namespace AdSite\AdSiteBundle\Repository;
  */
 class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getArticlesByCategory($category){
+    public function getArticlesByCategory($category)
+    {
         $articles = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Articles a
         WHERE a.category LIKE :category
-        ')->setParameter('category', '%'.$category.'%')->getResult();
+        ')->setParameter('category', '%' . $category . '%')->getResult();
 
         return $articles;
     }
 
 
-    public function getArticlesByUserId($userId){
+    public function getArticlesByUserId($userId)
+    {
         $articles = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Articles a
         WHERE EXISTS ( SELECT b FROM AdSiteBundle:User b 
@@ -30,6 +32,7 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
         return $articles;
     }
 
+
     public function getArticleById($id)
     {
         $article = $this->getEntityManager()->createQuery('
@@ -38,5 +41,50 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
         ')->setParameters(array('id' => $id))->getResult();
 
         return $article;
+}
+    public function getArticlesFiltered($keywords, $category, $city)
+    {
+        $keywords_tab = explode(' ', $keywords);
+        $array_tmp = array(0 => 'vvvvvvvvv', 1=> 'vvvvvvvvvv');
+        for ($i = 4 - count($keywords_tab); $i >= count($keywords_tab); $i--) {
+            $keywords_tab = array_merge($keywords_tab, $array_tmp);
+        }
+
+        print_r($keywords_tab);
+
+        if (strcmp($category, "Tous") == 0) {
+            $articles = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Articles a
+        WHERE (a.description LIKE :keywords0 OR
+        a.title LIKE :keywords0 OR 
+        a.description LIKE :keywords1 OR
+        a.title LIKE :keywords1 OR
+        a.description LIKE :keywords2 OR
+        a.title LIKE :keywords2) AND
+        ( a.place = :city OR :city IS NULL )
+        ')->setParameters(array('keywords0' => '%' . $keywords_tab[0] . '%',
+                'keywords1' => '%' . $keywords_tab[1] . '%',
+                'keywords2' => '%' . $keywords_tab[2] . '%',
+                'city' => $city))->getResult();
+        }
+        else{
+            $articles = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Articles a
+        WHERE (a.description LIKE :keywords0 OR
+        a.title LIKE :keywords0 OR 
+        a.description LIKE :keywords1 OR
+        a.title LIKE :keywords1 OR
+        a.description LIKE :keywords2 OR
+        a.title LIKE :keywords2) AND 
+        (a.place = :city OR :city IS NULL ) AND
+        a.category = :category
+        ')->setParameters(array('keywords0' => '%' . $keywords_tab[0] . '%',
+                'keywords1' => '%' . $keywords_tab[1] . '%',
+                'keywords2' => '%' . $keywords_tab[2] . '%',
+                'category' => $category,
+                'city' => $city))->getResult();
+        }
+
+        return $articles;
     }
 }
