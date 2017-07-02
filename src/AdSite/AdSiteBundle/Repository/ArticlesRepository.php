@@ -29,4 +29,14 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 
         return $articles;
     }
+
+    public function getArticleById($id)
+    {
+        $article = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Articles a
+        WHERE a.id LIKE :id
+        ')->setParameters(array('id' => $id))->getResult();
+
+        return $article;
+    }
 }

@@ -33,9 +33,10 @@
                 <ul>
                     {% for article in article_tab %}
                         <li>
+                            <a href="http://localhost:8000/adsite/offer/{{ article.id }}" class="select_link">
                             <div id="elt">
                                 <div class="asideg">
-                                    <{% for pic in article.picture %}
+                                    {% for pic in article.picture %}
                                 <img width="158" heigth="158"
                                      src="{{ asset(pic.path) }}">
                                     {% endfor %}
@@ -47,6 +48,7 @@
                                     <div class="price"> {{ article.price }} €</div></br>
                                 </div>
                             </div>
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>
