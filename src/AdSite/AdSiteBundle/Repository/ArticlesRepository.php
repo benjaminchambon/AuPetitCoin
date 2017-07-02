@@ -10,22 +10,47 @@ namespace AdSite\AdSiteBundle\Repository;
  */
 class ArticlesRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getArticlesByCategory($category){
+    public function getArticlesByCategory($category)
+    {
         $articles = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Articles a
         WHERE a.category LIKE :category
-        ')->setParameter('category', '%'.$category.'%')->getResult();
+        ')->setParameter('category', '%' . $category . '%')->getResult();
 
         return $articles;
     }
 
 
-    public function getArticlesByUserId($userId){
+    public function getArticlesByUserId($userId)
+    {
         $articles = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Articles a
         WHERE EXISTS ( SELECT b FROM AdSiteBundle:User b 
         WHERE b.id = :userId)
         ')->setParameters(array('userId' => $userId))->getResult();
+
+        return $articles;
+    }
+
+    public function getArticlesFiltered($keywords, $category, $city)
+    {
+        if (strcmp($category, "Tous") == 0) {
+            $articles = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Articles a
+        WHERE (a.description LIKE :keywords OR
+        a.title LIKE :keywords) AND
+        ( a.place = :city OR :city IS NULL )
+        ')->setParameters(array('keywords' => '%' . $keywords . '%', 'city' => $city))->getResult();
+        }
+        else{
+            $articles = $this->getEntityManager()->createQuery('
+        SELECT a FROM AdSiteBundle:Articles a
+        WHERE (a.description LIKE :keywords OR
+        a.title LIKE :keywords) AND 
+        (a.place = :city OR :city IS NULL ) AND
+        a.category = :category
+        ')->setParameters(array('keywords' => '%' . $keywords . '%', 'category' => $category, 'city' => $city))->getResult();
+        }
 
         return $articles;
     }

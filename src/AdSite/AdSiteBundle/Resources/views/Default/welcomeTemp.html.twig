@@ -21,6 +21,7 @@
             <li  class="connect"><a id="nav"href="{{ path('test_login') }}">Mon compte</a></li>
         </ul>
     </div>
+    {{form(form, {'attr' : {'novalidate' : 'novalidate'}})}}
 {% endblock %}
 
 {% block body %}
@@ -35,7 +36,7 @@
                         <li>
                             <div id="elt">
                                 <div class="asideg">
-                                    <{% for pic in article.picture %}
+                                    {% for pic in article.picture %}
                                 <img width="158" heigth="158"
                                      src="{{ asset(pic.path) }}">
                                     {% endfor %}
