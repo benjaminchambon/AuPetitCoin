@@ -24,15 +24,13 @@
 {% endblock %}
 
 {% block body %}
-<p>{{ idPic }}</p>
-
     <div class="main">
         <div class="title">
             <p>{{ article.title }}</p>
         </div>
         <div class="pic_cont">
 
-        <img width="158" heigth="158"
+        <img
              src="{{ asset((article.picture|first).path) }}">
 
         </div>
