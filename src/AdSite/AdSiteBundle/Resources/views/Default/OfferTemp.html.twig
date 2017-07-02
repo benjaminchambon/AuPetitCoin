@@ -32,9 +32,15 @@
         </div>
         <div class="pic_cont">
 
-        <img width="700" heigth="700"
+        <img width="158" heigth="158"
              src="{{ asset((article.picture|first).path) }}">
 
+        </div>
+        <div id="line">
+            {% for pic in article.picture %}
+                <img width="158" heigth="158"
+                     src="{{ asset(pic.path) }}">
+            {% endfor %}
         </div>
         <div id="line">
             <p>Prix    {{ article.price }}</p>
