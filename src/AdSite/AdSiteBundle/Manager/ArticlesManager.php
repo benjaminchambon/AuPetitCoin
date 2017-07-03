@@ -100,8 +100,8 @@ class ArticlesManager
         return $this->articleRepo->getArticleById($id);
     }
 
-    public function getArticlesFiltered($keywords, $category, $city)
+    public function getArticlesFiltered($keywords, $category, $city, $distance)
     {
-        return $this->articleRepo->getArticlesFiltered($keywords, $category, $city);
+        return $this->articleRepo->getArticlesFiltered($keywords, $category, $city, $distance);
     }
 }

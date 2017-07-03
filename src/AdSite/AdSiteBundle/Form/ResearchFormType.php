@@ -30,6 +30,16 @@ class ResearchFormType extends AbstractType
                 ), array('mapped' => false)
             )
             ->add('city', TextType::class, array('label' => 'Ville'))
+            ->add('distance', ChoiceType::class
+                , array(
+                    'choices' => array(
+                        'France entière' => 3000,
+                        '0 à 10 km' => 10,
+                        '0 à 50 km' => 50,
+                        '0 à 300 km' => 300,
+                    ),
+                ), array('mapped' => false)
+            )
             ->add('Rechercher', SubmitType::class, array('label' => 'Rechercher', 'attr' => array('class' => 'but_connect')))
             ->getForm();
     }

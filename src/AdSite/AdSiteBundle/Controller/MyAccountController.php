@@ -41,6 +41,15 @@ class MyAccountController extends Controller
             }
         }
 
+/*
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Paris&destinations=espinouze&key=AIzaSyBbhRzlEDXRc4yTsfKyod_USIbggYUN918');
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $obj = json_decode($result);
+        print_r($obj->{'rows'}[0]->{'elements'}[0]->{'distance'}->{'text'});*/
 
         return $this->render('AdSiteBundle:MyAccount:MyAccount.html.twig', array('article_tab' => $articles,
             'form_inscr' => $form_inscription->createView()));

@@ -44,11 +44,12 @@
                                     </br>
                                     {{ article.category }}</br>
                                     {{ article.place }}</br></br>
-                                    <div class="price"> {{ article.price }} €</div></br>
+                                    <div class="price"> {{ article.price }} €</div>
+                                    </br>
                                     <a href="http://localhost:8000/adsite/editarticle/{{ article.id }}">Modifier</a>
                                 </div>
-                                    <a href="{{ path('my_account', {'id': article.id }) }}">Modifier</a>
-                                    <a href="{{ path('my_account', {'id': article.id }) }}">Supprimer</a>
+                                <a href="{{ path('my_account', {'id': article.id }) }}">Modifier</a>
+                                <a href="{{ path('my_account', {'id': article.id }) }}">Supprimer</a>
                             </div>
                         </li>
                     {% endfor %}
