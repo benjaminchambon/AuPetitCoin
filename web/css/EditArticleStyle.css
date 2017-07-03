@@ -1,0 +1,57 @@
+#main {
+    width: 929px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+#block_form
+{
+    width: 500px;
+    margin-top: 150px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 40px;
+}
+
+input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.but_connect{
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px #CCC dashed;
+    margin: 5px 5px;
+    margin-bottom: 30px;
+    padding: 5px;
+    text-transform: uppercase;
+    font-family:Arial;
+    color: #777;
+}
+
+label{
+    font-family:Arial;
+    color: #999;
+    font-size: 14px;
+}
+.description{
+    width: 500px;
+    height: 140px;
+}

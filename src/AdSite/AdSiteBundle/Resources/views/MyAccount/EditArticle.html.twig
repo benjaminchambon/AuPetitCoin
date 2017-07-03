@@ -1,0 +1,43 @@
+{% extends '::EditArticle.html.twig' %}
+
+{% block title %}Editer{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('css/navBarStyle.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/EditArticleStyle.css') }}" />
+{% endblock %}
+
+{% block navigation %}
+
+    <div id="nav">
+        <ul>
+            <li ><a  class="logo" href="{{ path('test_homepage') }}">AuPetitCoin</a></li>
+            <li ><a  href="{{ path('add_article') }}">DEPOSER UNE ANNONCE</a></li>
+            <li ><a  href="{{ path('test_homepage') }}">OFFRES</a></li>
+            <li ><a  href="{{ path('my_account') }}">MES ANNONCES</a></li>
+            <li  class="connect"><a id="nav"href="{{ path('test_login') }}">Mon compte</a></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+    <div id="main">
+    <center>
+    <div id="block_form">
+    <h1>Modifier l'annonce</h1>
+    {{form(form)}}
+        <div>
+            {% for pic in articlePics %}
+                <img width="158" heigth="158"
+                     src="{{ asset(pic.path) }}">
+            {% endfor %}
+        </div>
+    </div>
+
+    </center>
+
+    </div>
+{% endblock %}
