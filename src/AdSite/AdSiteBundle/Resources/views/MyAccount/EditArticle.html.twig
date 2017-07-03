@@ -33,6 +33,7 @@
             {% for pic in articlePics %}
                 <img width="158" heigth="158"
                      src="{{ asset(pic.path) }}">
+                <a href="{{ path('edit_article', {'idArticle' : idArticle, 'picId' : pic.id})}}">Supprimer</a>
             {% endfor %}
         </div>
         {{form(formPic)}}
