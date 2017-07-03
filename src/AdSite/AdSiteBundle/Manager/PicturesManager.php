@@ -65,5 +65,9 @@ class PicturesManager
         return $this->picturesRepo->getPicturesById($id);
     }
 
+    public function getAllPictures()
+    {
+        return $this->picturesRepo->findAll();
+    }
 
 }

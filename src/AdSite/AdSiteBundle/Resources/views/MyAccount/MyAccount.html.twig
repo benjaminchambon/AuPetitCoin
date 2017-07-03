@@ -26,7 +26,7 @@
         <div id="block_form">
             <div id="ad">
                 <div id="main_tile">Mes informations</div>
-                {{form(form_inscr)}}
+                {{ form(form_inscr) }}
                 <div id="main_tile">Mes annonces</div>
                 <ul>
                     {% for article in article_tab %}
@@ -48,6 +48,8 @@
                                     <div class="price"> {{ article.price }} €</div>
                                     </br>
                                 </div>
+                                    <a href="{{ path('my_account', {'id': article.id }) }}">Modifier</a>
+                                    <a href="{{ path('my_account', {'id': article.id }) }}">Supprimer</a>
                             </div>
                         </li>
                     {% endfor %}

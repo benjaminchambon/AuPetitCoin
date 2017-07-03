@@ -13,8 +13,9 @@ class PicturesRepository extends \Doctrine\ORM\EntityRepository
     public function getPicturesByArticle($idArticle){
         $pictures = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Pictures a
-        WHERE a.id_article = :idArticle
-        ')->setParameter('idArticle', '%'.$idArticle.'%')->getResult();
+        WHERE EXISTS ( SELECT b FROM AdSiteBundle:Articles b 
+        WHERE b.idArticle = :idArticle)
+        ')->setParameters(array('idArticle' => $idArticle))->getResult();
 
         return $pictures;
     }

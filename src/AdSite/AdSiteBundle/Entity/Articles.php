@@ -89,10 +89,15 @@ class Articles
      *
      */
     private $description;
+
+
     /**
      * @ORM\OneToMany(targetEntity="AdSite\AdSiteBundle\Entity\Pictures", mappedBy="article", cascade={"persist"})
      */
     private $picture;
+
+
+
     public function getId(){
         return $this->id;
     }
