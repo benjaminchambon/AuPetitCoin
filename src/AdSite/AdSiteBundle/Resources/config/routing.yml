@@ -17,3 +17,7 @@ add_article:
 my_account:
     path:     /myaccount
     defaults:  { _controller: AdSiteBundle:MyAccount:myaccount}
+
+offer_info:
+    path:     /offer/{idPic}
+    defaults : { _controller: AdSiteBundle:Offer:offer}

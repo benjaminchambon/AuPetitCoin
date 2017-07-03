@@ -30,19 +30,35 @@ class NewArticleController extends Controller
             if ($form->get('Enregistrer')->isClicked()) {
                 $article_access = new ArticlesManager($this->getDoctrine()->getManager());
                 $picture_access = new PicturesManager($this->getDoctrine()->getManager());
+                $array_pic = array();
 
-
-                if ($form->get('photos')->getData() != null) {
+                //ajout des images dans la base
+                if ($form->get('photos_1')->getData() != null) {
 
                     //upload sur le serveur et insertion dans la base
-                    $pic = $picture_access->insertPicture( $form->get('photos')->getData());
+                    $pic = $picture_access->insertPicture( $form->get('photos_1')->getData());
+                    array_push($array_pic,$pic);
+                    $arr_test[] = $pic;
+                }
 
+                if ($form->get('photos_2')->getData() != null) {
 
-                    $array_pic[] = $pic;
-                    $art = $article_access->insertArticle($form, $user[0], $array_pic);
+                    //upload sur le serveur et insertion dans la base
+                    $pic = $picture_access->insertPicture( $form->get('photos_2')->getData());
+                    array_push($array_pic,$pic);
+                }
+                if ($form->get('photos_3')->getData() != null) {
 
-                    $picture_access->updatePicture($pic->getId(),null, $art);
+                    //upload sur le serveur et insertion dans la base
+                    $pic = $picture_access->insertPicture( $form->get('photos_3')->getData());
+                    array_push($array_pic,$pic);
 
+                }
+                //ajout de l'article
+                $art = $article_access->insertArticle($form, $user[0], $arr_test);
+                //mise a jour foreign key image
+                foreach ($array_pic as $elt) {
+                    $picture_access->updatePicture($elt->getId(), null, $art);
                 }
 
                 unset($article);

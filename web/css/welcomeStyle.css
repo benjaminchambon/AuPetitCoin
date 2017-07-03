@@ -1,7 +1,7 @@
 #main {
     width: 929px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 #block_form
@@ -41,13 +41,13 @@
 }
 
 #ad li a:hover:not(.active) {
-    background-color: #555;
+    background-color: #BBBBBB;
     color: white;
 }
 
 #ad #elt{
      width:802px;
-     height: 155px;
+     height: 180px;
      /*pour centrer*/
       margin:auto;
      border: 1px #CCC solid;
@@ -59,8 +59,11 @@
 
 #ad #elt .asideg{
     float:left;
-    width:20%;
-     padding: 15px;
+    width:30%;
+    height:100%;
+    position: relative;
+    transform-style: preserve-3d;
+
 
  }
 #ad #main_tile{
@@ -80,8 +83,9 @@
 
 #ad #elt .asided{
     width:300px;
-    margin-left:20%;
-    padding:10px;
+
+    margin-left:30%;
+    padding-top:10px;
 }
 
 #ad #elt .asided .title{
@@ -97,3 +101,16 @@
     font-weight: bold;
     color:#4CAF50;
 }
+
+img {
+    max-width: 70%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+

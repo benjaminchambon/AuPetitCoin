@@ -1,0 +1,54 @@
+{% extends '::WelcomePage.html.twig' %}
+
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/navBarStyle.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/offerStyle.css') }}" />
+{% endblock %}
+
+{% block navigation %}
+    <div id="nav">
+        <ul>
+            <li><a class="logo" href="#home">AuPetitCoin</a></li>
+            <li><a href="http://localhost:8000/adsite/addarticle">DEPOSER UNE ANNONCE</a></li>
+            <li><a href="http://localhost:8000/adsite/welcome">OFFRES</a></li>
+            <li><a href="#about">MES ANNONCES</a></li>
+            <li class="connect"><a id="nav" href="http://localhost:8000/adsite/login">Mon compte</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="title">
+            <p>{{ article.title }}</p>
+        </div>
+        <div class="pic_cont">
+
+        <img
+             src="{{ asset((article.picture|first).path) }}">
+
+        </div>
+        <div id="line">
+            {% for pic in article.picture %}
+                <img width="158" heigth="158"
+                     src="{{ asset(pic.path) }}">
+            {% endfor %}
+        </div>
+        <div id="line">
+            <p>Prix    {{ article.price }}</p>
+        </div>
+        <div id="line">
+            <p>Catégorie   {{ article.category }}</p>
+        </div>
+        <div id="line">
+            <p>description  :{{ article.description }}</p>
+        </div>
+    </div>
+
+{% endblock %}

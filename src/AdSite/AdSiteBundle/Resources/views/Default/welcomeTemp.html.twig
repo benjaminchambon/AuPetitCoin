@@ -25,7 +25,6 @@
 {% endblock %}
 
 {% block body %}
-    <p>Bienvenue {{ user }}</p>
     </br>
     <div id="main">
         <div id="block_form">
@@ -34,12 +33,15 @@
                 <ul>
                     {% for article in article_tab %}
                         <li>
+                            <a href="http://localhost:8000/adsite/offer/{{ article.id }}" class="select_link">
                             <div id="elt">
                                 <div class="asideg">
-                                    {% for pic in article.picture %}
-                                <img width="158" heigth="158"
-                                     src="{{ asset(pic.path) }}">
-                                    {% endfor %}
+                                    {% set chemin = article.picture.first() %}
+                                    {% if  chemin %}
+                                        <img
+                                             src="{{ asset(chemin.path) }}">
+                                        {% endif %}
+
                                 </div>
                                 <div class="asided">
                                     <div class="title">{{ article.title }}</div></br>
@@ -48,6 +50,7 @@
                                     <div class="price"> {{ article.price }} €</div></br>
                                 </div>
                             </div>
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>

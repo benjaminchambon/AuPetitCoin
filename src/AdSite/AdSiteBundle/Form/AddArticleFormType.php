@@ -32,7 +32,9 @@ class AddArticleFormType extends AbstractType
             ->add('place', TextType::class, array('label' => 'Lieu'))
             ->add('price', NumberType::class, array('label' => 'Prix'))
             ->add('description', TextareaType::class, array('label' => 'Description'))
-            ->add('photos', FileType::class, array('mapped' => false), array('label' => 'Photos') )
+            ->add('photos_1', FileType::class, array('mapped' => false), array('label' => 'Photos principale') )
+            ->add('photos_2', FileType::class, array('mapped' => false), array('label' => 'Photos 2') )
+            ->add('photos_3', FileType::class, array('mapped' => false), array('label' => 'Photos 3') )
             ->add('Enregistrer', SubmitType::class, array('label' => 'Ajouter', 'attr' => array('class' => 'but_connect')))
             ->getForm();
     }

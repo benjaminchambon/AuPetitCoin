@@ -1,0 +1,48 @@
+.main {
+    width: 929px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+#line
+{
+    width: 740px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 5px;
+    border: 1px #CCC solid;
+    font-family: Arial;
+    color:#333333;
+}
+.title
+{
+    width: 740px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-family: Arial;
+    font-size:25px;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px #CCC solid;
+}
+.pic_cont
+{
+    width: 740px;
+
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px #CCC solid;
+    text-align: center;
+   ;
+
+}
+img{
+    margin:auto;
+    right: 0;
+    left:0;
+    max-width: 90%;
+    height: auto;
+}

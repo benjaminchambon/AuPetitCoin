@@ -34,10 +34,11 @@
                             {{ article.picture|length }}
                             <div id="elt">
                                 <div class="asideg">
-                                    {% for pic in article.picture %}
+                                    {% set chemin = article.picture.first() %}
+                                    {% if  chemin %}
                                         <img width="158" heigth="158"
-                                             src="{{ asset(pic.path) }}">
-                                    {% endfor %}
+                                             src="{{ asset(chemin.path) }}">
+                                    {% endif %}
                                 </div>
                                 <div class="asided">
                                     <div class="title">{{ article.title }}</div>
