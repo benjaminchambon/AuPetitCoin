@@ -19,19 +19,17 @@ class ResearchFormType extends AbstractType
     {
         $builder
             ->add('keywords', TextType::class, array('label' => 'Titre'))
-            ->add('category', ChoiceType::class
-                , array(
-                    'choices' => array(
+            ->add('category', ChoiceType::class, array('label' => 'Catégorie ','choices' => array(
                         'Tous' => 'Tous',
                         'Automobile' => 'Automobile',
                         'Informatique' => 'Informatique',
                         'Emplois' => 'Emplois',
-                    ),
+                ),
                 ), array('mapped' => false)
             )
             ->add('city', TextType::class, array('label' => 'Ville'))
             ->add('distance', ChoiceType::class
-                , array(
+                , array('label' => 'Distance ',
                     'choices' => array(
                         'France entière' => 3000,
                         '0 à 10 km' => 10,
