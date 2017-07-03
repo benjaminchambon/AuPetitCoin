@@ -26,7 +26,7 @@ class MyAccountController extends Controller
         //deconnexion
         $defaultData = array('message' => 'Type here');
         $form_deco = $this->createFormBuilder($defaultData)
-            ->add('send', SubmitType::class)
+            ->add('Deconnexion', SubmitType::class)
             ->getForm();
         $form_deco->handleRequest($request);
 
