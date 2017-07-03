@@ -12,19 +12,45 @@ height:50px;
     border: 1px #AAA solid;
     font-family: Arial;
     color:#333333;
+
+}
+#line_description
+{
+    width: 740px;
+    height:200px;
+
+    border: 1px #AAA solid;
+    font-family: Arial;
+    font-size:14px;
+    color:#333333;
+
+}
+#line_pad{
+    padding:15px;
+}
+
+#line_scroll_photo
+{
+    width: 740px;
+    height:170px;
+    border: 1px #AAA solid;
+    font-family: Arial;
+    color:#333333;
 }
 
 .lineg{
     float:left;
-    height:100%;
+    height:auto;
     width:30%;
     background-color: #cccccc;
     font-weight: bold;
-
+padding: 16px;
 }
 
 .lined{
-    margin-left:30%;
+    margin-left:33%;
+    padding: 16px;
+
 }
 
 .title
@@ -41,9 +67,6 @@ height:50px;
 {
     width: 740px;
 
-
-    background-color: #f2f2f2;
-    padding: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
     border: 1px #CCC solid;

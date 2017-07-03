@@ -34,7 +34,8 @@
              src="{{ asset((article.picture|first).path) }}">
 
         </div>
-        <div id="line">
+        <div id="line_scroll_photo">
+
             {% for pic in article.picture %}
                 <img width="158" heigth="158"
                      src="{{ asset(pic.path) }}">
@@ -42,10 +43,10 @@
         </div>
         <div id="line">
             <div class="lineg">
-                Prix  :
+                Prix
             </div>
             <div class="lined">
-                {{ article.price }}
+                {{ article.price }} €
             </div>
         </div>
         <div id="line">
@@ -56,9 +57,11 @@
                 {{ article.category }}
             </div>
         </div>
-        <div id="line">
-            description  :</br></br>
+        <div id="line_description">
+            <div id="line_pad">
+            Description  :</br></br>
             {{ article.description }}
+            </div>
         </div>
     </div>
 
