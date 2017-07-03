@@ -32,7 +32,7 @@ class WelcomeController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
             $article_access = new ArticlesManager($this->getDoctrine()->getManager());
             if ($form->get('Rechercher')->isClicked()) {
-                $article_tab = $article_access->getArticlesFiltered($form->get('keywords')->getData(),$form->get('category')->getData(),$form->get('city')->getData());
+                $article_tab = $article_access->getArticlesFiltered($form->get('keywords')->getData(),$form->get('category')->getData(),$form->get('city')->getData(),$form->get('distance')->getData());
             }
         }
         else {

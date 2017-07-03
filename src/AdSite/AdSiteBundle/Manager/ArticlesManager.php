@@ -81,17 +81,27 @@ class ArticlesManager
         return $this->articleRepo->getArticlesByCategory($category);
     }
 
-    public function getArticlesByUserId($userId)
+
+    public function getArticlesByUserId($idUser)
     {
-        return $this->articleRepo->getArticlesByUserId($userId);
+        $userArticles = [];
+        $articlesAll = $this->articleRepo->findAll();
+        foreach ($articlesAll as $article) {
+            if ($article->getUser() != null && $article->getUser()->getId() == $idUser)
+                array_push($userArticles, $article);
+        }
+        return $userArticles;
+        //return $this->articleRepo->getArticleById($id);
     }
 
 
     public function getArticleById($id)
     {
         return $this->articleRepo->getArticleById($id);
-}
-    public function getArticlesFiltered($keywords, $category, $city){
-        return $this->articleRepo->getArticlesFiltered($keywords, $category, $city);
+    }
+
+    public function getArticlesFiltered($keywords, $category, $city, $distance)
+    {
+        return $this->articleRepo->getArticlesFiltered($keywords, $category, $city, $distance);
     }
 }
