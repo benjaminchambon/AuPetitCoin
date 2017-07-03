@@ -10,6 +10,7 @@ namespace AdSite\AdSiteBundle\Controller;
 
 
 use AdSite\AdSiteBundle\Form\EditInfoArticleFormType;
+use AdSite\AdSiteBundle\Form\EditPicArticleFormType;
 use Symfony\Component\HttpFoundation\Request;
 use AdSite\AdSiteBundle\Entity\Articles;
 use AdSite\AdSiteBundle\Entity\Pictures;
@@ -34,9 +35,13 @@ class EditArticleController extends Controller
 
         //formulaire
         $form = $this->createForm(EditInfoArticleFormType::class, $article);
+        $formPic = $this->createForm(EditPicArticleFormType::class,$article);
         $form->handleRequest($request);
+        $formPic->handleRequest($request);
         echo count($article->getPicture());
         $articlePics = $article->getPicture();
+
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -49,8 +54,16 @@ class EditArticleController extends Controller
             }
         }
 
+        if ($formPic->isSubmitted() && $formPic->isValid()) {
+            if ($formPic->get('Enregistrer')->isClicked()) {
+               echo "ajout_image";
+                $picture_access = new PicturesManager($this->getDoctrine()->getManager());
+                $pic = $picture_access->insertPicture( $formPic->get('photo')->getData());
+                $picture_access->updatePicture($pic->getId(), null, $article);
+            }
+        }
 
 
-        return $this->render('AdSiteBundle:MyAccount:EditArticle.html.twig',array('form' => $form->createView(),'articlePics'=>$articlePics));
+        return $this->render('AdSiteBundle:MyAccount:EditArticle.html.twig',array('form' => $form->createView(),'articlePics'=>$articlePics,'formPic' => $formPic->createView()));
     }
 }
