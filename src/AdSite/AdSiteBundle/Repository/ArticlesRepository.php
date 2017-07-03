@@ -39,7 +39,6 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
         SELECT a FROM AdSiteBundle:Articles a
         WHERE a.id LIKE :id
         ')->setParameters(array('id' => $id))->getResult();
-
         return $article;
 }
     public function getArticlesFiltered($keywords, $category, $city)
