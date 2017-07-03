@@ -46,22 +46,22 @@ class UsersManager
         return true;
     }
 
-    public function updateUser($id, $data)
+    public function updateUser($id, $form)
     {
         $post = $this->userRepo->find($id);
         if (!$post) {
             return false;
         }
-        if ($data->getLogin() != null)
-            $post->setLogin($data->getLogin());
-        if ($data->getPassword() != null)
-            $post->setPassword($data->getPassword());
-        if ($data->getPhone() != null)
-            $post->setPhone($data->getPhone());
-        if ($data->getEmail() != null)
-            $post->setEmail($data->getEmail());
-        if ($data->getCity() != null)
-            $post->setCity($data->getCity());
+        if ($form->get('login')->getData() != null)
+            $post->setLogin($form->get('login')->getData());
+        if ($form->get('password')->getData() != null)
+            $post->setPassword($form->get('password')->getData());
+        if ($form->get('phone')->getData() != null)
+            $post->setPhone($form->get('phone')->getData());
+        if ($form->get('email')->getData()!= null)
+            $post->setEmail($form->get('email')->getData());
+        if ($form->get('city')->getData() != null)
+            $post->setCity($form->get('city')->getData());
 
         $this->em->flush();
         return true;

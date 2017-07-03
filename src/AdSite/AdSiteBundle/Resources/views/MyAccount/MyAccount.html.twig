@@ -4,19 +4,19 @@
 
 
 {% block stylesheets %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <link rel="stylesheet" href="{{ asset('css/navBarStyle.css') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/navBarStyle.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/welcomeStyle.css') }}"/>
 {% endblock %}
 
 {% block navigation %}
     <div id="nav">
         <ul>
-            <li ><a  class="logo" href="{{ path('test_homepage') }}">AuPetitCoin</a></li>
-            <li ><a  href="{{ path('add_article') }}">DEPOSER UNE ANNONCE</a></li>
-            <li ><a  href="{{ path('test_homepage') }}">OFFRES</a></li>
-            <li ><a  href="{{ path('my_account') }}">MES ANNONCES</a></li>
-            <li  class="connect"><a id="nav"href="{{ path('test_login') }}">Mon compte</a></li>
+            <li><a class="logo" href="{{ path('test_homepage') }}">AuPetitCoin</a></li>
+            <li><a href="{{ path('add_article') }}">DEPOSER UNE ANNONCE</a></li>
+            <li><a href="{{ path('test_homepage') }}">OFFRES</a></li>
+            <li><a href="{{ path('my_account') }}">MES ANNONCES</a></li>
+            <li class="connect"><a id="nav" href="{{ path('test_login') }}">Mon compte</a></li>
         </ul>
     </div>
 {% endblock %}
@@ -25,6 +25,8 @@
     <div id="main">
         <div id="block_form">
             <div id="ad">
+                <div id="main_tile">Mes informations</div>
+                {{form(form_inscr)}}
                 <div id="main_tile">Mes annonces</div>
                 <ul>
                     {% for article in article_tab %}
@@ -38,7 +40,8 @@
                                     {% endif %}
                                 </div>
                                 <div class="asided">
-                                    <div class="title">{{ article.title }}</div></br>
+                                    <div class="title">{{ article.title }}</div>
+                                    </br>
                                     {{ article.category }}</br>
                                     {{ article.place }}</br></br>
                                     <div class="price"> {{ article.price }} €</div></br>

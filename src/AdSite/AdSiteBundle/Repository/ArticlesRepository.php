@@ -50,8 +50,6 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
             $keywords_tab = array_merge($keywords_tab, $array_tmp);
         }
 
-        print_r($keywords_tab);
-
         if (strcmp($category, "Tous") == 0) {
             $articles = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Articles a
