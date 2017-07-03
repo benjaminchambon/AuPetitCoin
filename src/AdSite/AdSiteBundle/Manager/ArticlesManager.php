@@ -50,24 +50,22 @@ class ArticlesManager
         return true;
     }
 
-    public function updateArticle($id, $data)
+    public function updateArticle($id, $form)
     {
         $post = $this->articleRepo->find($id);
         if (!$post) {
             return false;
         }
-        if ($data->getTitle() != null)
-            $post->setTitle($data->getTitle());
-        if ($data->getCategory() != null)
-            $post->setCategory($data->getCategory());
-        if ($data->getPlace() != null)
-            $post->setPlace($data->getPlace());
-        if ($data->getDate() != null)
-            $post->setDate($data->getDate());
-        if ($data->getPrice() != null)
-            $post->setPrice($data->getPrice());
-        if ($data->getDescription() != null)
-            $post->setDescription($data->getDescription());
+        if ($form->get('title')->getData() != null)
+            $post->setTitle($form->get('title')->getData());
+        if ($form->get('category')->getData() != null)
+            $post->setCategory($form->get('category')->getData());
+        if ($form->get('place')->getData() != null)
+            $post->setPlace($form->get('place')->getData());
+        if ($form->get('price')->getData() != null)
+            $post->setPrice($form->get('price')->getData());
+        if ($form->get('description')->getData() != null)
+            $post->setDescription($form->get('description')->getData());
 
         $this->em->flush();
         return $post;

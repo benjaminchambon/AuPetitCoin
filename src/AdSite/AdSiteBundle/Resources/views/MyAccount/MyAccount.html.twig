@@ -29,7 +29,6 @@
                 <ul>
                     {% for article in article_tab %}
                         <li>
-                            {{ article.picture|length }}
                             <div id="elt">
                                 <div class="asideg">
                                     {% set chemin = article.picture.first() %}
@@ -43,6 +42,7 @@
                                     {{ article.category }}</br>
                                     {{ article.place }}</br></br>
                                     <div class="price"> {{ article.price }} €</div></br>
+                                    <a href="http://localhost:8000/adsite/editarticle/{{ article.id }}">Modifier</a>
                                 </div>
                             </div>
                         </li>

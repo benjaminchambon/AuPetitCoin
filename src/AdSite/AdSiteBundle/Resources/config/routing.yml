@@ -21,3 +21,7 @@ my_account:
 offer_info:
     path:     /offer/{idPic}
     defaults : { _controller: AdSiteBundle:Offer:offer}
+
+edit_article:
+    path:     /editarticle/{idArticle}
+    defaults : { _controller: AdSiteBundle:EditArticle:editArticle}

@@ -26,7 +26,7 @@
 {% block body %}
     <div class="main">
         <div class="title">
-            <p>{{ article.title }}</p>
+            {{ article.title }}
         </div>
         <div class="pic_cont">
 
@@ -41,13 +41,24 @@
             {% endfor %}
         </div>
         <div id="line">
-            <p>Prix    {{ article.price }}</p>
+            <div class="lineg">
+                Prix  :
+            </div>
+            <div class="lined">
+                {{ article.price }}
+            </div>
         </div>
         <div id="line">
-            <p>Catégorie   {{ article.category }}</p>
+            <div class="lineg">
+                Catégorie
+            </div>
+            <div class="lined">
+                {{ article.category }}
+            </div>
         </div>
         <div id="line">
-            <p>description  :{{ article.description }}</p>
+            description  :</br></br>
+            {{ article.description }}
         </div>
     </div>
 
