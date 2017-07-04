@@ -8,7 +8,7 @@
 {
     width: 740px;
 height:50px;
-
+    margin:auto;
     border: 1px #AAA solid;
     font-family: Arial;
     color:#333333;
@@ -18,7 +18,7 @@ height:50px;
 {
     width: 740px;
     height:200px;
-
+    margin:auto;
     border: 1px #AAA solid;
     font-family: Arial;
     font-size:14px;
@@ -31,6 +31,7 @@ height:50px;
 
 #line_scroll_photo
 {
+    margin:auto;
     width: 740px;
     height:170px;
     border: 1px #AAA solid;
@@ -55,7 +56,8 @@ padding: 16px;
 
 .title
 {
-    width: 740px;
+    width: 730px;
+    margin:auto;
     background-color: #f2f2f2;
     font-family: Arial;
     font-size:25px;
@@ -66,7 +68,7 @@ padding: 16px;
 .pic_cont
 {
     width: 740px;
-
+    margin:auto;
     padding-top: 20px;
     padding-bottom: 20px;
     border: 1px #CCC solid;
