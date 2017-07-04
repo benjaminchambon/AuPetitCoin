@@ -17,8 +17,6 @@ class MyAccountController extends Controller
 {
     public function myaccountAction(Request $request)
     {
-        if ($request->get('id') != null)
-            $this->delete($request->get('id'));
 
         if ($request->get('logout') == 1){
             $session = $request->getSession();
@@ -27,7 +25,18 @@ class MyAccountController extends Controller
         }
 
         $session = $request->getSession();
+
+        if($session->has('user_login') == false)
+        {
+            return $this->redirectToRoute('test_login');
+        }
+
         $user_id = $session->get('user_login')[0]['id'];
+
+        if ($request->get('id') != null)
+            $this->delete($request->get('id'));
+
+
 
         //deconnexion
         $defaultData = array('message' => 'Type here');

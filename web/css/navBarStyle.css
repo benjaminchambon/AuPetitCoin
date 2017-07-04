@@ -17,12 +17,19 @@ p{
 
 #nav li a {
     display: block;
-    color: #666;
+    color: #777;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-family:"Arial";
     font-size: 13px;
+}
+
+#nav li .but_connect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #nav li a:hover:not(.active) {
