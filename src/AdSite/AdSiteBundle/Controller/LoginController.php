@@ -26,8 +26,8 @@ class LoginController extends Controller
                 $user_access = new UsersManager($this->getDoctrine()->getManager());
                 $login = $form_connexion->get('pseudo')->getData();
                 $password = $form_connexion->get('password')->getData();
-                if ($user_access->checkUserExist($login, $password) > 0) {
-                    $user_id = $user_access->getUserId($login, $password);
+                if ($user_access->checkUserExist($login, md5($password)) > 0) {
+                    $user_id = $user_access->getUserId($login, md5($password));
                     $session->set('user_login', $user_id);
                     return $this->redirectToRoute('test_homepage');
                 }

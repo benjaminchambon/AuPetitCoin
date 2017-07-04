@@ -19,7 +19,8 @@ class UsersManager
     {
         $user = new User();
         $user->setLogin($form->get('login')->getData());
-        $user->setPassword($form->get('password')->getData());
+        $pwd_md5 = md5($form->get('password')->getData());
+        $user->setPassword($pwd_md5);
         $user->setPhone($form->get('phone')->getData());
         $user->setEmail($form->get('email')->getData());
         $user->setCity($form->get('city')->getData());
@@ -55,7 +56,7 @@ class UsersManager
         if ($form->get('login')->getData() != null)
             $post->setLogin($form->get('login')->getData());
         if ($form->get('password')->getData() != null)
-            $post->setPassword($form->get('password')->getData());
+            $post->setPassword(md5($form->get('password')->getData()));
         if ($form->get('phone')->getData() != null)
             $post->setPhone($form->get('phone')->getData());
         if ($form->get('email')->getData()!= null)
