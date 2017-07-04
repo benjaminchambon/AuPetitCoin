@@ -16,8 +16,14 @@ class NewArticleController extends Controller
 {
     public function AddArticleAction(Request $request)
     {
-        $article = new Articles();
         $session = $request->getSession();
+
+        if($session->has('user_login') == false)
+        {
+            return $this->redirectToRoute('test_login');
+        }
+        
+        $article = new Articles();
         $user_id = $session->get('user_login')[0]['id'];
 
         $user_access = new UsersManager($this->getDoctrine()->getManager());
