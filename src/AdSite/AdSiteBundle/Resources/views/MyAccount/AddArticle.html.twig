@@ -19,6 +19,9 @@
             <li ><a  href="{{ path('test_homepage') }}">OFFRES</a></li>
             <li ><a  href="{{ path('my_account') }}">MES ANNONCES</a></li>
             <li  class="connect"><a id="nav"href="{{ path('test_login') }}">Mon compte</a></li>
+            {% if app.session.get('user_login')|length == 1 %}
+                <li class="connect"><a id="nav" href="{{ path('my_account', {'logout' : 1}) }}">Déconnexion</a></li>
+            {% endif %}
         </ul>
     </div>
 
