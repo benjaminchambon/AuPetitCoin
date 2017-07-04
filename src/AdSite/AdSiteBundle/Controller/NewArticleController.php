@@ -22,7 +22,7 @@ class NewArticleController extends Controller
         {
             return $this->redirectToRoute('test_login');
         }
-        
+
         $article = new Articles();
         $user_id = $session->get('user_login')[0]['id'];
 

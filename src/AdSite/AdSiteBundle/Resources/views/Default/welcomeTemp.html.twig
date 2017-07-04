@@ -29,7 +29,9 @@
 
 {% block body %}<br/>
     <div id="block_form_search">
-        {{form(form, {'attr' : {'novalidate' : 'novalidate'}})}}
+        <div class="block_form_search_in">
+          {{form(form, {'attr' : {'novalidate' : 'novalidate'}})}}
+        </div>
     </div>
     <div id="main">
         <div id="block_form">
