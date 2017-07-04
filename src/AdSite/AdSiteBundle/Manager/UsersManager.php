@@ -19,7 +19,8 @@ class UsersManager
     {
         $user = new User();
         $user->setLogin($form->get('login')->getData());
-        $user->setPassword($form->get('password')->getData());
+        $pwd_md5 = md5($form->get('password')->getData());
+        $user->setPassword($pwd_md5);
         $user->setPhone($form->get('phone')->getData());
         $user->setEmail($form->get('email')->getData());
         $user->setCity($form->get('city')->getData());
