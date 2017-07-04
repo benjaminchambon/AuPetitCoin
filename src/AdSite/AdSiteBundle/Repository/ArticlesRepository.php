@@ -20,7 +20,7 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
         return $articles;
     }
 
-
+/*
     public function getArticlesByUserId($userId)
     {
         $articles = $this->getEntityManager()->createQuery('
@@ -30,14 +30,14 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
         ')->setParameters(array('userId' => $userId))->getResult();
 
         return $articles;
-    }
+    }*/
 
 
     public function getArticleById($id)
     {
         $article = $this->getEntityManager()->createQuery('
         SELECT a FROM AdSiteBundle:Articles a
-        WHERE a.id LIKE :id
+        WHERE a.id = :id
         ')->setParameters(array('id' => $id))->getResult();
         return $article;
     }
@@ -115,6 +115,8 @@ class ArticlesRepository extends \Doctrine\ORM\EntityRepository
         $result = curl_exec($ch);
         curl_close($ch);
         $obj = json_decode($result);
+        if ($obj->{'rows'}[0]->{'elements'}[0]->{'status'} == 'NOT_FOUND')
+            return -42;
         return ($obj->{'rows'}[0]->{'elements'}[0]->{'distance'}->{'text'});
     }
 }
