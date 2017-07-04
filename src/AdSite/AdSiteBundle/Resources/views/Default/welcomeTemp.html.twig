@@ -54,7 +54,7 @@
                                     <div class="title">{{ article.title }}</div></br>
                                     {{ article.category }}</br>
                                     {{ article.place }}</br></br>
-                                    <div class="price"> {{ article.price }} €</div></br>
+                                    <div class="price"> {{ article.price }} €</div> {{ article.date|date("d/m/Y") }}</br></br>
                                 </div>
                             </div>
                             </a>
