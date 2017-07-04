@@ -17,11 +17,20 @@ class MyAccountController extends Controller
 {
     public function myaccountAction(Request $request)
     {
+
+        $session = $request->getSession();
+
+        if($session->has('user_login') == false)
+        {
+            return $this->redirectToRoute('test_login');
+        }
+
+        $user_id = $session->get('user_login')[0]['id'];
+
         if ($request->get('id') != null)
             $this->delete($request->get('id'));
 
-        $session = $request->getSession();
-        $user_id = $session->get('user_login')[0]['id'];
+
 
         //deconnexion
         $defaultData = array('message' => 'Type here');
