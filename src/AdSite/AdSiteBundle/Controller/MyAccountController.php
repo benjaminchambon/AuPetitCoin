@@ -20,6 +20,12 @@ class MyAccountController extends Controller
         if ($request->get('id') != null)
             $this->delete($request->get('id'));
 
+        if ($request->get('logout') == 1){
+            $session = $request->getSession();
+            $session->clear();
+            return $this->redirectToRoute('test_homepage');
+        }
+
         $session = $request->getSession();
         $user_id = $session->get('user_login')[0]['id'];
 

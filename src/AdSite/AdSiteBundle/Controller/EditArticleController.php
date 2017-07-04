@@ -32,7 +32,8 @@ class EditArticleController extends Controller
 
 
         if ($request->get('picId') != null)
-            $this->delete($request->get('picId'), $article->getId());
+            if (count($article->getPicture()) > 1)
+                $this->delete($request->get('picId'), $article->getId());
 
         //récupération de l'id de l'utilisateur
         $session = $request->getSession();
@@ -48,7 +49,6 @@ class EditArticleController extends Controller
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             if ($form->get('Enregistrer')->isClicked()) {
                 $article_access = new ArticlesManager($this->getDoctrine()->getManager());
                 //ajout de l'article
