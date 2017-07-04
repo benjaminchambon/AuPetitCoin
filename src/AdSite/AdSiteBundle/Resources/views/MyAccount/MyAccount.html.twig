@@ -33,7 +33,7 @@
                 {{ form(form_deco) }}
                 <div id="main_tile">Mes informations</div>
                 <div class="block_info">
-                {{ form(form_inscr) }}
+                    {{ form(form_inscr) }}
                 </div>
                 <div id="main_tile">Mes annonces</div>
                 <ul>
@@ -54,7 +54,7 @@
                                     {{ article.place }}</br></br>
                                     <div class="price"> {{ article.price }} €</div>
                                     </br>
-                                    <a href="http://localhost:8000/adsite/editarticle/{{ article.id }}">Modifier</a>
+                                    <a href="{{ path('edit_article', {'idArticle': article.id }) }}">Modifier</a>
                                 </div>
                                 <a href="{{ path('my_account', {'id': article.id }) }}">Supprimer</a>
                             </div>
@@ -63,6 +63,5 @@
                 </ul>
             </div>
         </div>
-
     </div>
 {% endblock %}

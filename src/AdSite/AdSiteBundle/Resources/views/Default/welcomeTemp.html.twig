@@ -14,11 +14,11 @@
 {% block navigation %}
     <div id="nav">
         <ul>
-            <li ><a  class="logo" href="{{ path('test_homepage') }}">AuPetitCoin</a></li>
-            <li ><a  href="{{ path('add_article') }}">DEPOSER UNE ANNONCE</a></li>
-            <li ><a  href="{{ path('test_homepage') }}">OFFRES</a></li>
-            <li ><a  href="{{ path('my_account') }}">MES ANNONCES</a></li>
-            <li  class="connect"><a id="nav"href="{{ path('test_login') }}">Mon compte</a></li>
+            <li><a class="logo" href="{{ path('test_homepage') }}">AuPetitCoin</a></li>
+            <li><a href="{{ path('add_article') }}">DEPOSER UNE ANNONCE</a></li>
+            <li><a href="{{ path('test_homepage') }}">OFFRES</a></li>
+            <li><a href="{{ path('my_account') }}">MES ANNONCES</a></li>
+            <li class="connect"><a id="nav" href="{{ path('test_login') }}">Mon compte</a></li>
             {% if app.session.get('user_login')|length == 1 %}
                 <li class="connect"><a id="nav" href="{{ path('my_account', {'logout' : 1}) }}">Déconnexion</a></li>
             {% endif %}
@@ -30,7 +30,7 @@
 {% block body %}<br/>
     <div id="block_form_search">
         <div class="block_form_search_in">
-          {{form(form, {'attr' : {'novalidate' : 'novalidate'}})}}
+            {{ form(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
         </div>
     </div>
     <div id="main">
@@ -40,23 +40,25 @@
                 <ul>
                     {% for article in article_tab %}
                         <li>
-                            <a href="http://localhost:8000/adsite/offer/{{ article.id }}" class="select_link">
-                            <div id="elt">
-                                <div class="asideg">
-                                    {% set chemin = article.picture.first() %}
-                                    {% if  chemin %}
-                                        <img
-                                             src="{{ asset(chemin.path) }}">
+                            <a href="{{ path('offer_info', {'idPic' : article.id}) }}" class="select_link">
+                                <div id="elt">
+                                    <div class="asideg">
+                                        {% set chemin = article.picture.first() %}
+                                        {% if  chemin %}
+                                            <img
+                                                    src="{{ asset(chemin.path) }}">
                                         {% endif %}
 
+                                    </div>
+                                    <div class="asided">
+                                        <div class="title">{{ article.title }}</div>
+                                        </br>
+                                        {{ article.category }}</br>
+                                        {{ article.place }}</br></br>
+                                        <div class="price"> {{ article.price }} €</div>
+                                        </br>
+                                    </div>
                                 </div>
-                                <div class="asided">
-                                    <div class="title">{{ article.title }}</div></br>
-                                    {{ article.category }}</br>
-                                    {{ article.place }}</br></br>
-                                    <div class="price"> {{ article.price }} €</div> {{ article.date|date("d/m/Y") }}</br></br>
-                                </div>
-                            </div>
                             </a>
                         </li>
                     {% endfor %}
